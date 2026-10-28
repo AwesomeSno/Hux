@@ -3,7 +3,7 @@
 build_hux_hardware.py
 
 Full-featured KiCad 10 hardware generator for Hux:
-- Desktop AI Smart Home Assistant (Jarvis Companion)
+- Desktop AI Smart Home Assistant
 - 72mm x 72mm board scale with 6mm rounded corners & M3 standoffs
 - ST7789 IPS LCD display interface (face/HUD)
 - 8x RGB NeoPixel Arc-Reactor halo ring
@@ -467,7 +467,7 @@ def generate_schematic():
 	(uuid "{PROJECT_UUID}")
 	(paper "A3")
 	(title_block
-		(title "Hux: Desktop AI Smart Home Assistant (Jarvis Companion)")
+		(title "Hux: Desktop AI Smart Home Assistant")
 		(date "2026-10-28")
 		(rev "v1.0")
 		(company "Hack Club Half Life")
@@ -530,7 +530,7 @@ def generate_pcb():
 	(gr_circle (center {CX} {CY}) (end {CX + RADIUS + 2.5} {CY}) (stroke (width 0.3) (type solid)) (layer "F.SilkS") (uuid "{u()}"))
 	(gr_circle (center {CX} {CY}) (end {CX + RADIUS - 2.5} {CY}) (stroke (width 0.2) (type default)) (layer "F.SilkS") (uuid "{u()}"))
 	(gr_text "HUX // AI DESKTOP ASSISTANT" (at {CX} 63.5) (layer "F.SilkS") (uuid "{u()}") (effects (font (size 1.3 1.3) (thickness 0.22) bold)))
-	(gr_text "STARK // JARVIS COMPANION" (at {CX} 66.5) (layer "F.SilkS") (uuid "{u()}") (effects (font (size 0.9 0.9) (thickness 0.18))))
+	(gr_text "SMART HOME COMPANION" (at {CX} 66.5) (layer "F.SilkS") (uuid "{u()}") (effects (font (size 0.9 0.9) (thickness 0.18))))
 	(gr_text "Hack Club Half Life // AwesomeSno" (at {CX} 69.2) (layer "F.SilkS") (uuid "{u()}") (effects (font (size 0.8 0.8) (thickness 0.16))))
 	(gr_text "MIC IN" (at 36.0 11.5) (layer "F.SilkS") (uuid "{u()}") (effects (font (size 0.8 0.8) (thickness 0.16))))
 	(gr_text "USB-C POWER & DATA" (at {CX} {H - 2.0}) (layer "B.SilkS") (uuid "{u()}") (effects (font (size 0.9 0.9) (thickness 0.18))))
@@ -734,7 +734,7 @@ def generate_pcb():
 	)
 	(paper "A4")
 	(title_block
-		(title "Hux: Desktop AI Smart Home Assistant (Jarvis Companion)")
+		(title "Hux: Desktop AI Smart Home Assistant")
 		(date "2026-10-28")
 		(rev "v1.0")
 		(company "Hack Club Half Life")

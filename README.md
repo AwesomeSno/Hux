@@ -8,7 +8,7 @@ A compact, desktop AI smart home assistant inspired by Jarvis from Iron Man. Hux
 
 ## What is Hux?
 
-Most smart home voice hubs are boring black cylinders with no personality or visual life. Hux is designed to bring an Iron Man-style desktop companion to your desk without spending hundreds of dollars.
+Most smart home voice hubs are boring black cylinders with no personality or visual life. Hux is designed to bring a vivid, expressive desktop companion to your desk without spending hundreds of dollars.
 
 Built around an ESP32-S3 microcontroller, Hux sits on your desk displaying an expressive animated face with reactive eye states (idle, listening, processing, speaking, alert). When you speak to Hux or trigger smart automations, it talks back with custom personality, controls your Home Assistant entities (lights, media, switches, climate), and dynamically switches its screen to display live device cards, weather, or room telemetry.
 
@@ -17,7 +17,7 @@ Built around an ESP32-S3 microcontroller, Hux sits on your desk displaying an ex
 ## Key Features
 
 - **Expressive Face & HUD Display**: A crisp IPS color screen showing reactive eye animations, facial expressions, and dynamic dashboard cards for home devices.
-- **Jarvis-like Persona**: Low-latency voice interaction paired with LLM or local Home Assistant Assist pipelines for witty, helpful responses.
+- **Conversational Voice Persona**: Low-latency voice interaction paired with LLM or local Home Assistant Assist pipelines for responsive, witty interaction.
 - **Home Assistant Native**: Direct communication with Home Assistant via WebSockets and REST APIs for zero-cloud, instant local device control.
 - **Full Voice Pipeline**: Onboard digital I2S MEMS microphone for wake-word and voice pickup, paired with an I2S DAC amplifier and speaker for clear voice output.
 - **Arc-Reactor Status Halo**: Circular 8x addressable RGB NeoPixel ring encircling the display bezel for glowing status cues.
@@ -57,33 +57,29 @@ All hardware design and manufacturing files are located in [`kicad/`](kicad/):
 
 ---
 
-## Half Life Budget Estimate (Under $65 Cap)
+## Components & Bill of Materials
 
-| Item | Estimated Cost (USD) |
-|---|---|
-| Custom 2-Layer PCB + SMT Assembly (JLCPCB 5 pcs) | ~$16.00 |
-| ESP32-S3 Module + Passives | ~$6.50 |
-| ST7789 Color IPS Display (SPI) | ~$4.50 |
-| INMP441 I2S Microphone Module | ~$1.80 |
-| MAX98357A I2S Amp + 3W Speaker | ~$3.20 |
-| Addressable RGB Ring + USB-C Port & LDO | ~$2.50 |
-| Shipping, Taxes & Packaging Allowance | ~$15.00 |
-| **Total Estimated Cost** | **~$49.50 (Comfortably under $65)** |
-
----
-
-## Status & Roadmap
-
-- [x] Initial concept & architecture
-- [x] Schematic design in KiCad 10
-- [x] PCB layout (72mm × 72mm) with Arc Reactor NeoPixel ring & ST7789 display
-- [x] Production Gerbers, drill files, BOM & CPL export
-- [ ] 3D printed desktop enclosure modeling
-- [ ] Face animation engine & LVGL dashboard firmware
-- [ ] Home Assistant API & Assist voice pipeline integration
+| Item | Part / Designation | Supplier Code (LCSC / Mfg) | Package | Qty | Role |
+|---|---|---|---|---|---|
+| **Microcontroller** | ESP32-S3-WROOM-1-N16R8 | LCSC: C5180337 | SMD Module | 1 | 240MHz dual-core MCU, 16MB Flash, 8MB PSRAM, Wi-Fi & BLE |
+| **Color IPS Display** | ST7789 1.69" / 2.0" IPS LCD | LCSC: C2903565 / ST7789V | 8-Pin Header / SPI | 1 | Expressive face animations & telemetry dashboard |
+| **Digital MEMS Mic** | INMP441 | LCSC: C444583 | SMD Acoustic | 1 | Omnidirectional I2S microphone for voice commands |
+| **Audio Amplifier** | MAX98357AETE+T | LCSC: C268261 | QFN-16 | 1 | 3.2W Mono Class-D I2S DAC amplifier |
+| **Micro Speaker** | 4Ω 3W Cavity Speaker | JST-PH 2.0mm / C131337 | 28mm / 31mm | 1 | Voice responses and sound effects |
+| **Arc-Reactor Halo** | SK6812 MINI-E | LCSC: C2890040 | SMD-3535 | 8 | Circular addressable RGB NeoPixels for status cues |
+| **Voltage Regulator** | TLV75533PDBVR | LCSC: C397683 | SOT-23-5 | 1 | Low-dropout 3.3V 500mA LDO regulator |
+| **ESD Protection** | USBLC6-2SC6 | LCSC: C7519 | SOT-23-6 | 1 | High-speed USB D+/D- transient ESD suppressor |
+| **USB-C Receptacle** | TYPE-C-31-M-12 (16-Pin) | LCSC: C165948 | 16-Pin SMD | 1 | 5V DC power and native USB-CDC programming |
+| **Tactile Buttons** | TL3342F160QG | LCSC: C318884 | SMD SPST | 2 | Hardware Reset (EN) and Bootloader (IO0) |
+| **Ceramic Capacitors** | 10µF 16V X7R (0805) | LCSC: C15849 | 0805 | 3 | Bulk power input/output filters |
+| **Decoupling Caps** | 100nF 50V X7R (0805) | LCSC: C14663 | 0805 | 11 | IC supply decoupling & LED smoothing |
+| **Resistors** | 5.1kΩ 1% (0805) | LCSC: C17704 | 0805 | 2 | USB-C CC1/CC2 5V pull-downs |
+| **Resistors** | 10kΩ 1% (0805) | LCSC: C17414 | 0805 | 3 | Pull-ups for EN, BOOT, SD_MODE |
+| **Resistors** | 330Ω 1% (0805) | LCSC: C17632 | 0805 | 1 | NeoPixel DIN data line protection |
+| **Telemetry Header** | 4-Pin 2.54mm Header | LCSC: C22548 | 1x04 P2.54mm | 1 | I2C sensor expansion (SDA, SCL, 3V3, GND) |
 
 ---
 
 ## Author
 
-Designed and built by **Harinandan J V** ([@AwesomeSno](https://github.com/AwesomeSno)) for Hack Club's Half Life hardware grant program.
+Designed and built by **Harinandan J V** ([@AwesomeSno](https://github.com/AwesomeSno)) for Hack Club's Half Life.
