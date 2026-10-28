@@ -1,27 +1,28 @@
 # Hux
 
-A compact, desktop AI smart home assistant inspired by Jarvis from Iron Man. Hux features an animated digital face, real-time status display, voice interaction, and native integration with Home Assistant to control your home with personality.
+A desktop AI smart home companion built with an ESP32-S3, featuring an animated expressive face display, an addressable RGB status ring, dual I2S voice I/O, and native local integration with Home Assistant. Inspired by Jarvis from Iron Man.
 
 ![Hux Desktop Assistant Hero](assets/hux_cover_hero.png)
 
 ---
 
-## What is Hux?
+## What is this?
 
-Most smart home voice hubs are boring black cylinders with no personality or visual life. Hux is designed to bring a vivid, expressive desktop companion to your desk without spending hundreds of dollars.
+Most smart home speakers on the market are completely lifeless—they're just boring black plastic pucks sitting on your desk that listen to you with zero personality and no visual feedback beyond a single blinking LED.
 
-Built around an ESP32-S3 microcontroller, Hux sits on your desk displaying an expressive animated face with reactive eye states (idle, listening, processing, speaking, alert). When you speak to Hux or trigger smart automations, it talks back with custom personality, controls your Home Assistant entities (lights, media, switches, climate), and dynamically switches its screen to display live device cards, weather, or room telemetry.
+For Hack Club's Half Life, I wanted to build something with actual life and presence on my desk: **Hux**. It's a custom desktop hardware companion powered by an ESP32-S3 microcontroller with a crisp color IPS display running expressive animated eyes and reactive facial emotions. 
+
+When you speak to Hux or trigger automations around your room, it talks back, controls your Home Assistant entities (lights, plugs, AC, media) over local Wi-Fi, and dynamically switches its screen into a live telemetry HUD showing room sensor readings, weather, or device toggles.
 
 ---
 
-## Key Features
+## How it works
 
-- **Expressive Face & HUD Display**: A crisp IPS color screen showing reactive eye animations, facial expressions, and dynamic dashboard cards for home devices.
-- **Conversational Voice Persona**: Low-latency voice interaction paired with LLM or local Home Assistant Assist pipelines for responsive, witty interaction.
-- **Home Assistant Native**: Direct communication with Home Assistant via WebSockets and REST APIs for zero-cloud, instant local device control.
-- **Full Voice Pipeline**: Onboard digital I2S MEMS microphone for wake-word and voice pickup, paired with an I2S DAC amplifier and speaker for clear voice output.
-- **Arc-Reactor Status Halo**: Circular 8x addressable RGB NeoPixel ring encircling the display bezel for glowing status cues.
-- **Budget-Conscious (<$65)**: Spec'd specifically to remain under the Hack Club Half Life $65 limit, including PCB fabrication, all BOM components, taxes, and shipping.
+1. **Expressive Face & Telemetry Display**: A 1.69" / 2.0" ST7789 IPS LCD (240×280) sits in the center of the board, rendering smooth animated eye expressions (idle blinking, attentive listening, thinking, and speaking waveforms). When you ask about your room or devices, the screen smoothly docks into live Home Assistant glance cards.
+2. **Arc-Reactor Status Halo**: A circular ring of 8 addressable RGB NeoPixels encircles the display bezel. It pulses cyan when listening, spins amber when thinking, and flashes red on sensor alerts, giving the desk unit a real presence.
+3. **Local Home Assistant Integration**: Hux talks directly to Home Assistant using native WebSockets and REST APIs over local Wi-Fi. No slow cloud hops, no proprietary subscriptions—just instant local control over lights, switches, and smart entities.
+4. **I2S Digital Voice Pipeline**: For voice input, an INMP441 digital MEMS microphone samples audio through a front-facing acoustic sound port drilled through the PCB. For voice replies, a MAX98357A I2S Class-D DAC amplifier powers an onboard 3W micro speaker.
+5. **72mm Desktop Form Factor**: The whole system is packaged onto a 72mm × 72mm 2-layer PCB with rounded corners and M3 mounting holes, powered cleanly over USB-C.
 
 ![Hux Top 3D View](assets/hux_top_3d.png)
 
@@ -31,19 +32,19 @@ Built around an ESP32-S3 microcontroller, Hux sits on your desk displaying an ex
 
 | Component | Part / Spec | Role |
 |---|---|---|
-| **MCU** | ESP32-S3-WROOM-1 (16MB Flash, 8MB PSRAM) | Dual-core 240MHz controller with Wi-Fi & BLE |
-| **Display** | 1.69" or 2.0" ST7789 IPS SPI LCD (240×280) | Expressive animated face & smart home telemetry HUD |
-| **Microphone** | INMP441 I2S Digital MEMS Mic | High-SNR voice input with acoustic front port |
+| **MCU** | ESP32-S3-WROOM-1 (16MB Flash, 8MB PSRAM) | Dual-core 240MHz controller handling Wi-Fi, display, and dual I2S audio |
+| **Display** | 1.69" or 2.0" ST7789 IPS SPI LCD (240×280) | Animated vector face and smart home telemetry cards |
+| **Microphone** | INMP441 I2S Digital MEMS Mic | High-SNR voice input with front acoustic port |
 | **Audio Out** | MAX98357A I2S Class-D DAC + 3W 4Ω Speaker | Voice synthesis and feedback playback |
-| **Halo Lighting** | 8x SK6812 MINI-E Addressable RGB LEDs | Arc Reactor circular aura / voice activity glow |
-| **Power & Circuit** | USB-C 16-pin, TLV75533 3.3V LDO, USBLC6-2SC6 ESD | Stable desktop USB 5V power and transient protection |
+| **Halo Lighting** | 8x SK6812 MINI-E Addressable RGB LEDs | Circular Arc-Reactor status glow |
+| **Power & Circuit** | USB-C 16-pin, TLV75533 3.3V LDO, USBLC6-2SC6 ESD | Clean desktop USB 5V power and transient ESD protection |
 | **Dimensions** | 72mm × 72mm × 1.6mm FR4 (6mm corner radii) | Standard M3 standoff mounting holes |
 
 ---
 
-## Schematic & KiCad Design
+## Schematic & Hardware Design
 
-The hardware is designed as a clean 2-layer PCB in KiCad 10:
+The hardware is designed as a clean 2-layer board in KiCad 10:
 
 ![Hux Schematic](assets/hux_schematic.png)
 
