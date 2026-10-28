@@ -2,6 +2,8 @@
 
 A compact, desktop AI smart home assistant inspired by Jarvis from Iron Man. Hux features an animated digital face, real-time status display, voice interaction, and native integration with Home Assistant to control your home with personality.
 
+![Hux Desktop Assistant Hero](assets/hux_cover_hero.png)
+
 ---
 
 ## What is Hux?
@@ -18,8 +20,10 @@ Built around an ESP32-S3 microcontroller, Hux sits on your desk displaying an ex
 - **Jarvis-like Persona**: Low-latency voice interaction paired with LLM or local Home Assistant Assist pipelines for witty, helpful responses.
 - **Home Assistant Native**: Direct communication with Home Assistant via WebSockets and REST APIs for zero-cloud, instant local device control.
 - **Full Voice Pipeline**: Onboard digital I2S MEMS microphone for wake-word and voice pickup, paired with an I2S DAC amplifier and speaker for clear voice output.
-- **Ambient Status Halo**: Addressable RGB NeoPixels around the perimeter for Arc Reactor-inspired glowing status cues.
+- **Arc-Reactor Status Halo**: Circular 8x addressable RGB NeoPixel ring encircling the display bezel for glowing status cues.
 - **Budget-Conscious (<$65)**: Spec'd specifically to remain under the Hack Club Half Life $65 limit, including PCB fabrication, all BOM components, taxes, and shipping.
+
+![Hux Top 3D View](assets/hux_top_3d.png)
 
 ---
 
@@ -29,10 +33,27 @@ Built around an ESP32-S3 microcontroller, Hux sits on your desk displaying an ex
 |---|---|---|
 | **MCU** | ESP32-S3-WROOM-1 (16MB Flash, 8MB PSRAM) | Dual-core 240MHz controller with Wi-Fi & BLE |
 | **Display** | 1.69" or 2.0" ST7789 IPS SPI LCD (240×280) | Expressive animated face & smart home telemetry HUD |
-| **Microphone** | INMP441 / ICS-43434 I2S Digital MEMS Mic | High-SNR voice input and wake-word capture |
+| **Microphone** | INMP441 I2S Digital MEMS Mic | High-SNR voice input with acoustic front port |
 | **Audio Out** | MAX98357A I2S Class-D DAC + 3W 4Ω Speaker | Voice synthesis and feedback playback |
-| **Aesthetics** | WS2812B NeoPixel Ring (8–12 LEDs) | Arc Reactor aura / voice activity glow |
-| **Power & Enclosure** | USB-C 5V input + 3D Printed Desk Stand | Clean desktop footprint |
+| **Halo Lighting** | 8x SK6812 MINI-E Addressable RGB LEDs | Arc Reactor circular aura / voice activity glow |
+| **Power & Circuit** | USB-C 16-pin, TLV75533 3.3V LDO, USBLC6-2SC6 ESD | Stable desktop USB 5V power and transient protection |
+| **Dimensions** | 72mm × 72mm × 1.6mm FR4 (6mm corner radii) | Standard M3 standoff mounting holes |
+
+---
+
+## Schematic & KiCad Design
+
+The hardware is designed as a clean 2-layer PCB in KiCad 10:
+
+![Hux Schematic](assets/hux_schematic.png)
+
+All hardware design and manufacturing files are located in [`kicad/`](kicad/):
+- Full Project: [`kicad/hux.kicad_pro`](kicad/hux.kicad_pro)
+- Schematic: [`kicad/hux.kicad_sch`](kicad/hux.kicad_sch) (Printable: [`kicad/hux_schematic.pdf`](kicad/hux_schematic.pdf))
+- PCB Layout: [`kicad/hux.kicad_pcb`](kicad/hux.kicad_pcb)
+- Bill of Materials: [`kicad/bom.csv`](kicad/bom.csv) (JLCPCB pre-formatted with LCSC parts)
+- Pick & Place: [`kicad/cpl.csv`](kicad/cpl.csv)
+- Production Gerbers: [`kicad/hux_gerbers.zip`](kicad/hux_gerbers.zip)
 
 ---
 
@@ -54,8 +75,10 @@ Built around an ESP32-S3 microcontroller, Hux sits on your desk displaying an ex
 ## Status & Roadmap
 
 - [x] Initial concept & architecture
-- [ ] Schematic design in KiCad
-- [ ] PCB layout & 3D enclosure modeling
+- [x] Schematic design in KiCad 10
+- [x] PCB layout (72mm × 72mm) with Arc Reactor NeoPixel ring & ST7789 display
+- [x] Production Gerbers, drill files, BOM & CPL export
+- [ ] 3D printed desktop enclosure modeling
 - [ ] Face animation engine & LVGL dashboard firmware
 - [ ] Home Assistant API & Assist voice pipeline integration
 

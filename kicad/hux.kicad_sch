@@ -1,0 +1,1630 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "fef6db75-802f-4b68-806d-a4530399060a")
+	(paper "A3")
+	(title_block
+		(title "Hux: Desktop AI Smart Home Assistant (Jarvis Companion)")
+		(date "2026-10-28")
+		(rev "v1.0")
+		(company "Hack Club Half Life")
+		(comment 1 "ESP32-S3, ST7789 IPS LCD, Arc-Reactor Halo, I2S Audio")
+		(comment 2 "Open Source Hardware (OSHW) - Author: Harinandan J V")
+	)
+	(lib_symbols
+		(symbol "HUX:ESP32-S3-WROOM-1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U" (at 0 33.02 0) (effects (font (size 1.27 1.27))))
+			(property "Value" "ESP32-S3-WROOM-1" (at 0 -33.02 0) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(property "Description" "ESP32-S3-WROOM-1" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(symbol "ESP32-S3-WROOM-1_0_1"
+				(rectangle (start -12.7 30.48) (end 12.7 -30.48) (stroke (width 0.254)) (fill (type background)))
+			)
+			(symbol "ESP32-S3-WROOM-1_1_1"
+				(pin power_in line (at -15.24 25.4 0) (length 2.54) (name "3V3" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+				(pin power_in line (at -15.24 -25.4 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+				(pin input line (at -15.24 20.32 0) (length 2.54) (name "EN" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
+				(pin input line (at -15.24 15.24 0) (length 2.54) (name "IO0" (effects (font (size 1.27 1.27)))) (number "27" (effects (font (size 1.27 1.27)))))
+				(pin bidirectional line (at -15.24 5.08 0) (length 2.54) (name "IO19_DN" (effects (font (size 1.27 1.27)))) (number "13" (effects (font (size 1.27 1.27)))))
+				(pin bidirectional line (at -15.24 0 0) (length 2.54) (name "IO20_DP" (effects (font (size 1.27 1.27)))) (number "14" (effects (font (size 1.27 1.27)))))
+				(pin input line (at -15.24 -7.62 0) (length 2.54) (name "IO4_MIC_SD" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27)))))
+				(pin output line (at -15.24 -12.7 0) (length 2.54) (name "IO5_MIC_WS" (effects (font (size 1.27 1.27)))) (number "5" (effects (font (size 1.27 1.27)))))
+				(pin output line (at -15.24 -17.78 0) (length 2.54) (name "IO6_MIC_SCK" (effects (font (size 1.27 1.27)))) (number "6" (effects (font (size 1.27 1.27)))))
+				(pin output line (at 15.24 -17.78 180) (length 2.54) (name "IO7_SPK_LRC" (effects (font (size 1.27 1.27)))) (number "7" (effects (font (size 1.27 1.27)))))
+				(pin output line (at 15.24 -12.7 180) (length 2.54) (name "IO15_SPK_BCLK" (effects (font (size 1.27 1.27)))) (number "8" (effects (font (size 1.27 1.27)))))
+				(pin output line (at 15.24 -7.62 180) (length 2.54) (name "IO16_SPK_DIN" (effects (font (size 1.27 1.27)))) (number "9" (effects (font (size 1.27 1.27)))))
+				(pin output line (at 15.24 25.4 180) (length 2.54) (name "IO12_DISP_SCK" (effects (font (size 1.27 1.27)))) (number "20" (effects (font (size 1.27 1.27)))))
+				(pin output line (at 15.24 20.32 180) (length 2.54) (name "IO11_DISP_SDA" (effects (font (size 1.27 1.27)))) (number "19" (effects (font (size 1.27 1.27)))))
+				(pin output line (at 15.24 15.24 180) (length 2.54) (name "IO10_DISP_RES" (effects (font (size 1.27 1.27)))) (number "18" (effects (font (size 1.27 1.27)))))
+				(pin output line (at 15.24 10.16 180) (length 2.54) (name "IO9_DISP_DC" (effects (font (size 1.27 1.27)))) (number "17" (effects (font (size 1.27 1.27)))))
+				(pin output line (at 15.24 5.08 180) (length 2.54) (name "IO14_DISP_CS" (effects (font (size 1.27 1.27)))) (number "22" (effects (font (size 1.27 1.27)))))
+				(pin output line (at 15.24 0 180) (length 2.54) (name "IO21_DISP_BLK" (effects (font (size 1.27 1.27)))) (number "23" (effects (font (size 1.27 1.27)))))
+				(pin output line (at 15.24 -22.86 180) (length 2.54) (name "IO48_RGB" (effects (font (size 1.27 1.27)))) (number "25" (effects (font (size 1.27 1.27)))))
+				(pin bidirectional line (at -15.24 10.16 0) (length 2.54) (name "IO1_SDA" (effects (font (size 1.27 1.27)))) (number "37" (effects (font (size 1.27 1.27)))))
+				(pin output line (at -15.24 7.62 0) (length 2.54) (name "IO2_SCL" (effects (font (size 1.27 1.27)))) (number "36" (effects (font (size 1.27 1.27)))))
+			)
+		)
+
+		(symbol "HUX:USB_C_16P"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J" (at 0 12.7 0) (effects (font (size 1.27 1.27))))
+			(property "Value" "USB-C-16P" (at 0 -12.7 0) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(property "Description" "USB-C-16P" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(symbol "USB_C_16P_0_1"
+				(rectangle (start -7.62 10.16) (end 7.62 -10.16) (stroke (width 0.254)) (fill (type background)))
+			)
+			(symbol "USB_C_16P_1_1"
+				(pin power_out line (at 10.16 7.62 180) (length 2.54) (name "VBUS" (effects (font (size 1.27 1.27)))) (number "A4_B9" (effects (font (size 1.27 1.27)))))
+				(pin power_out line (at 10.16 -7.62 180) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "A1_B12" (effects (font (size 1.27 1.27)))))
+				(pin bidirectional line (at 10.16 2.54 180) (length 2.54) (name "DP" (effects (font (size 1.27 1.27)))) (number "A6_B6" (effects (font (size 1.27 1.27)))))
+				(pin bidirectional line (at 10.16 -2.54 180) (length 2.54) (name "DN" (effects (font (size 1.27 1.27)))) (number "A7_B7" (effects (font (size 1.27 1.27)))))
+				(pin input line (at -10.16 2.54 0) (length 2.54) (name "CC1" (effects (font (size 1.27 1.27)))) (number "A5" (effects (font (size 1.27 1.27)))))
+				(pin input line (at -10.16 -2.54 0) (length 2.54) (name "CC2" (effects (font (size 1.27 1.27)))) (number "B5" (effects (font (size 1.27 1.27)))))
+			)
+		)
+
+		(symbol "HUX:USBLC6-2SC6"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U" (at 0 8.89 0) (effects (font (size 1.27 1.27))))
+			(property "Value" "USBLC6-2SC6" (at 0 -8.89 0) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(property "Description" "USBLC6-2SC6" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(symbol "USBLC6-2SC6_0_1"
+				(rectangle (start -5.08 6.35) (end 5.08 -6.35) (stroke (width 0.254)) (fill (type background)))
+			)
+			(symbol "USBLC6-2SC6_1_1"
+				(pin bidirectional line (at -7.62 2.54 0) (length 2.54) (name "IO1_IN" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+				(pin power_in line (at 0 -7.62 90) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+				(pin bidirectional line (at -7.62 -2.54 0) (length 2.54) (name "IO2_IN" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
+				(pin bidirectional line (at 7.62 -2.54 180) (length 2.54) (name "IO2_OUT" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27)))))
+				(pin power_in line (at 0 7.62 270) (length 2.54) (name "VBUS" (effects (font (size 1.27 1.27)))) (number "5" (effects (font (size 1.27 1.27)))))
+				(pin bidirectional line (at 7.62 2.54 180) (length 2.54) (name "IO1_OUT" (effects (font (size 1.27 1.27)))) (number "6" (effects (font (size 1.27 1.27)))))
+			)
+		)
+
+		(symbol "HUX:TLV75533"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U" (at 0 8.89 0) (effects (font (size 1.27 1.27))))
+			(property "Value" "TLV75533PDBVR" (at 0 -8.89 0) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(property "Description" "TLV75533PDBVR" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(symbol "TLV75533_0_1"
+				(rectangle (start -7.62 6.35) (end 7.62 -6.35) (stroke (width 0.254)) (fill (type background)))
+			)
+			(symbol "TLV75533_1_1"
+				(pin power_in line (at -10.16 2.54 0) (length 2.54) (name "IN" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+				(pin power_in line (at 0 -7.62 90) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+				(pin input line (at -10.16 -2.54 0) (length 2.54) (name "EN" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
+				(pin power_out line (at 10.16 2.54 180) (length 2.54) (name "OUT" (effects (font (size 1.27 1.27)))) (number "5" (effects (font (size 1.27 1.27)))))
+			)
+		)
+
+		(symbol "HUX:ST7789_Display"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J" (at 0 13.969999999999999 0) (effects (font (size 1.27 1.27))))
+			(property "Value" "ST7789_IPS" (at 0 -13.969999999999999 0) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(property "Description" "ST7789_IPS" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(symbol "ST7789_Display_0_1"
+				(rectangle (start -7.62 11.43) (end 7.62 -11.43) (stroke (width 0.254)) (fill (type background)))
+			)
+			(symbol "ST7789_Display_1_1"
+				(pin power_in line (at -10.16 8.89 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+				(pin power_in line (at -10.16 6.35 0) (length 2.54) (name "VCC" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+				(pin input line (at -10.16 3.81 0) (length 2.54) (name "SCL" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
+				(pin input line (at -10.16 1.27 0) (length 2.54) (name "SDA" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27)))))
+				(pin input line (at -10.16 -1.27 0) (length 2.54) (name "RES" (effects (font (size 1.27 1.27)))) (number "5" (effects (font (size 1.27 1.27)))))
+				(pin input line (at -10.16 -3.81 0) (length 2.54) (name "DC" (effects (font (size 1.27 1.27)))) (number "6" (effects (font (size 1.27 1.27)))))
+				(pin input line (at -10.16 -6.35 0) (length 2.54) (name "CS" (effects (font (size 1.27 1.27)))) (number "7" (effects (font (size 1.27 1.27)))))
+				(pin input line (at -10.16 -8.89 0) (length 2.54) (name "BLK" (effects (font (size 1.27 1.27)))) (number "8" (effects (font (size 1.27 1.27)))))
+			)
+		)
+
+		(symbol "HUX:INMP441"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U" (at 0 11.43 0) (effects (font (size 1.27 1.27))))
+			(property "Value" "INMP441" (at 0 -11.43 0) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(property "Description" "INMP441" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(symbol "INMP441_0_1"
+				(rectangle (start -7.62 8.89) (end 7.62 -8.89) (stroke (width 0.254)) (fill (type background)))
+			)
+			(symbol "INMP441_1_1"
+				(pin power_in line (at -10.16 6.35 0) (length 2.54) (name "VDD" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+				(pin power_in line (at -10.16 -6.35 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+				(pin output line (at 10.16 3.81 180) (length 2.54) (name "SD" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
+				(pin input line (at -10.16 1.27 0) (length 2.54) (name "WS" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27)))))
+				(pin input line (at -10.16 -1.27 0) (length 2.54) (name "SCK" (effects (font (size 1.27 1.27)))) (number "5" (effects (font (size 1.27 1.27)))))
+				(pin input line (at -10.16 -3.81 0) (length 2.54) (name "L/R" (effects (font (size 1.27 1.27)))) (number "6" (effects (font (size 1.27 1.27)))))
+			)
+		)
+
+		(symbol "HUX:MAX98357A"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U" (at 0 12.7 0) (effects (font (size 1.27 1.27))))
+			(property "Value" "MAX98357A" (at 0 -12.7 0) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(property "Description" "MAX98357A" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(symbol "MAX98357A_0_1"
+				(rectangle (start -7.62 10.16) (end 7.62 -10.16) (stroke (width 0.254)) (fill (type background)))
+			)
+			(symbol "MAX98357A_1_1"
+				(pin power_in line (at -10.16 7.62 0) (length 2.54) (name "VIN" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+				(pin power_in line (at -10.16 -7.62 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+				(pin input line (at -10.16 2.54 0) (length 2.54) (name "DIN" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
+				(pin input line (at -10.16 0 0) (length 2.54) (name "BCLK" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27)))))
+				(pin input line (at -10.16 -2.54 0) (length 2.54) (name "LRCLK" (effects (font (size 1.27 1.27)))) (number "5" (effects (font (size 1.27 1.27)))))
+				(pin input line (at -10.16 -5.08 0) (length 2.54) (name "GAIN" (effects (font (size 1.27 1.27)))) (number "6" (effects (font (size 1.27 1.27)))))
+				(pin input line (at -10.16 5.08 0) (length 2.54) (name "SD_MODE" (effects (font (size 1.27 1.27)))) (number "7" (effects (font (size 1.27 1.27)))))
+				(pin output line (at 10.16 2.54 180) (length 2.54) (name "OUTP" (effects (font (size 1.27 1.27)))) (number "8" (effects (font (size 1.27 1.27)))))
+				(pin output line (at 10.16 -2.54 180) (length 2.54) (name "OUTN" (effects (font (size 1.27 1.27)))) (number "9" (effects (font (size 1.27 1.27)))))
+			)
+		)
+
+		(symbol "HUX:SK6812MINI-E"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "LED" (at 0 7.62 0) (effects (font (size 1.27 1.27))))
+			(property "Value" "SK6812MINI-E" (at 0 -7.62 0) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(property "Description" "SK6812MINI-E" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(symbol "SK6812MINI-E_0_1"
+				(rectangle (start -5.08 5.08) (end 5.08 -5.08) (stroke (width 0.254)) (fill (type background)))
+			)
+			(symbol "SK6812MINI-E_1_1"
+				(pin power_in line (at 0 7.62 270) (length 2.54) (name "VDD" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+				(pin output line (at 7.62 0 180) (length 2.54) (name "DOUT" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+				(pin power_in line (at 0 -7.62 90) (length 2.54) (name "VSS" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
+				(pin input line (at -7.62 0 0) (length 2.54) (name "DIN" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27)))))
+			)
+		)
+
+		(symbol "HUX:R"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R" (at 0 6.35 0) (effects (font (size 1.27 1.27))))
+			(property "Value" "R" (at 0 -6.35 0) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(property "Description" "R" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(symbol "R_0_1"
+				(rectangle (start -2.54 3.81) (end 2.54 -3.81) (stroke (width 0.254)) (fill (type background)))
+			)
+			(symbol "R_1_1"
+				(pin passive line (at 0 3.81 270) (length 1.27) (name "1" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+				(pin passive line (at 0 -3.81 90) (length 1.27) (name "2" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+			)
+		)
+
+		(symbol "HUX:C"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C" (at 0 6.35 0) (effects (font (size 1.27 1.27))))
+			(property "Value" "C" (at 0 -6.35 0) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(property "Description" "C" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(symbol "C_0_1"
+				(rectangle (start -2.54 3.81) (end 2.54 -3.81) (stroke (width 0.254)) (fill (type background)))
+			)
+			(symbol "C_1_1"
+				(pin passive line (at 0 3.81 270) (length 1.27) (name "1" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+				(pin passive line (at 0 -3.81 90) (length 1.27) (name "2" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+			)
+		)
+
+		(symbol "HUX:SW_Push"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "SW" (at 0 6.35 0) (effects (font (size 1.27 1.27))))
+			(property "Value" "SW_Push" (at 0 -6.35 0) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(property "Description" "SW_Push" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(symbol "SW_Push_0_1"
+				(rectangle (start -3.81 3.81) (end 3.81 -3.81) (stroke (width 0.254)) (fill (type background)))
+			)
+			(symbol "SW_Push_1_1"
+				(pin passive line (at -5.08 0 0) (length 2.54) (name "1" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+				(pin passive line (at 5.08 0 180) (length 2.54) (name "2" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+			)
+		)
+
+		(symbol "HUX:Conn_01x02"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J" (at 0 6.35 0) (effects (font (size 1.27 1.27))))
+			(property "Value" "Conn_01x02" (at 0 -6.35 0) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(property "Description" "Conn_01x02" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(symbol "Conn_01x02_0_1"
+				(rectangle (start -3.81 3.81) (end 3.81 -3.81) (stroke (width 0.254)) (fill (type background)))
+			)
+			(symbol "Conn_01x02_1_1"
+				(pin passive line (at -5.08 1.27 0) (length 2.54) (name "1" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+				(pin passive line (at -5.08 -1.27 0) (length 2.54) (name "2" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+			)
+		)
+
+		(symbol "HUX:Conn_01x04"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J" (at 0 8.89 0) (effects (font (size 1.27 1.27))))
+			(property "Value" "Conn_01x04" (at 0 -8.89 0) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(property "Description" "Conn_01x04" (at 0 0 0) (effects (font (size 1.27 1.27))) (hide yes))
+			(symbol "Conn_01x04_0_1"
+				(rectangle (start -3.81 6.35) (end 3.81 -6.35) (stroke (width 0.254)) (fill (type background)))
+			)
+			(symbol "Conn_01x04_1_1"
+				(pin passive line (at -5.08 3.81 0) (length 2.54) (name "1" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+				(pin passive line (at -5.08 1.27 0) (length 2.54) (name "2" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+				(pin passive line (at -5.08 -1.27 0) (length 2.54) (name "3" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
+				(pin passive line (at -5.08 -3.81 0) (length 2.54) (name "4" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27)))))
+			)
+		)
+
+	)
+
+	(symbol
+		(lib_id "HUX:ESP32-S3-WROOM-1")
+		(at 170 90 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c1109b15-1f71-4821-a0b0-d394c1b3acc7")
+		(property "Reference" "U1"
+			(at 170 78 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "ESP32-S3-WROOM-1"
+			(at 170 102 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "RF_Module:ESP32-S3-WROOM-1"
+			(at 170 90 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Datasheet" "~"
+			(at 170 90 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Description" "ESP32-S3-WROOM-1"
+			(at 170 90 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(pin "2"
+			(uuid "859e3d6e-1b2c-4789-af6e-8827e4e65a44")
+		)
+		(pin "1"
+			(uuid "84f2688c-d655-4c18-ba4d-d5a510d4fe51")
+		)
+		(pin "3"
+			(uuid "0fa16bca-54ff-4a49-a0fd-e47701c531fb")
+		)
+		(pin "27"
+			(uuid "8c27ff44-404e-4b5e-8274-95228bf55716")
+		)
+		(pin "13"
+			(uuid "3406fbc9-2558-4d56-bd51-cafe44813ff2")
+		)
+		(pin "14"
+			(uuid "3331090b-13b6-417a-aa56-39e29911db7a")
+		)
+		(pin "4"
+			(uuid "dee8f797-3b8e-4f2c-9111-de25dff1b472")
+		)
+		(pin "5"
+			(uuid "145d25c7-47b1-4abb-8064-65238edd95d6")
+		)
+		(pin "6"
+			(uuid "db5d5a83-b76b-40de-b208-6adf98f602a6")
+		)
+		(pin "7"
+			(uuid "a3a40c71-88ad-4171-8fa4-8cd55809d209")
+		)
+		(pin "8"
+			(uuid "2b0916c9-3ee7-4388-9b68-05f401d9dce9")
+		)
+		(pin "9"
+			(uuid "84fa2844-6799-442f-bcd1-7805da26fbf4")
+		)
+		(pin "20"
+			(uuid "18a76868-1782-4fd6-ba4e-52220349c3ea")
+		)
+		(pin "19"
+			(uuid "688459f0-9190-443e-8dc5-86edb52fd3cd")
+		)
+		(pin "18"
+			(uuid "879688d6-df1b-4fc3-acb8-b889aadbba52")
+		)
+		(pin "17"
+			(uuid "419e91df-18cd-4fce-973d-83fb5b0e3802")
+		)
+		(pin "22"
+			(uuid "922ba173-9525-4d16-98ea-982d29f48da4")
+		)
+		(pin "23"
+			(uuid "8633e033-0eab-471a-b65d-f98b3c326d1d")
+		)
+		(pin "25"
+			(uuid "0a290320-ccb5-477c-a9ff-a83dfcda3a65")
+		)
+		(pin "37"
+			(uuid "60a8fd10-b8a9-4cc4-a271-832eba4153f0")
+		)
+		(pin "36"
+			(uuid "90c44ca2-43b2-4436-a351-d538ff5e0d90")
+		)
+		(instances
+			(project "hux"
+				(path "/fef6db75-802f-4b68-806d-a4530399060a"
+					(reference "U1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "HUX:USB_C_16P")
+		(at 50 45 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e20c8026-f791-4042-9f82-397225d252d5")
+		(property "Reference" "J1"
+			(at 50 33 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "TYPE-C-16P"
+			(at 50 57 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Connector_USB:USB_C_Receptacle_16P"
+			(at 50 45 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Datasheet" "~"
+			(at 50 45 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Description" "TYPE-C-16P"
+			(at 50 45 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(pin "A4_B9"
+			(uuid "c9aac17e-f067-4e49-af4d-eef26bbee58f")
+		)
+		(pin "A1_B12"
+			(uuid "ad5c916e-3638-4e51-ab41-238a2cca1f03")
+		)
+		(pin "A6_B6"
+			(uuid "8f3e81bd-7e6d-4032-925b-a5095738b0e8")
+		)
+		(pin "A7_B7"
+			(uuid "f66d65ba-7c86-46a1-94bb-bbf5dd3838b3")
+		)
+		(pin "A5"
+			(uuid "b7c9d0d6-99c9-4561-932c-2c05963d8c9d")
+		)
+		(pin "B5"
+			(uuid "b584721e-85e4-4a2b-835e-4293a8092eac")
+		)
+		(instances
+			(project "hux"
+				(path "/fef6db75-802f-4b68-806d-a4530399060a"
+					(reference "J1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "HUX:USBLC6-2SC6")
+		(at 85 45 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c9927f09-8aab-4faa-a2a9-02c26ec8bd3e")
+		(property "Reference" "U2"
+			(at 85 33 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "USBLC6-2SC6"
+			(at 85 57 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-6"
+			(at 85 45 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Datasheet" "~"
+			(at 85 45 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Description" "USBLC6-2SC6"
+			(at 85 45 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(pin "1"
+			(uuid "ce4ff31d-2488-49b1-89ec-c0038c0ddcbb")
+		)
+		(pin "2"
+			(uuid "77f19902-e2f7-4f52-a8d5-3cd86109419a")
+		)
+		(pin "3"
+			(uuid "cd116790-7461-46d5-ae7d-cdd08be85aab")
+		)
+		(pin "4"
+			(uuid "9fe44204-4c9d-45f3-a762-5148e0ca1f72")
+		)
+		(pin "5"
+			(uuid "912a95db-45e1-4a4f-9139-a2f2a611943b")
+		)
+		(pin "6"
+			(uuid "26b2390e-bed8-4fef-bd90-acfba5109af6")
+		)
+		(instances
+			(project "hux"
+				(path "/fef6db75-802f-4b68-806d-a4530399060a"
+					(reference "U2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "HUX:TLV75533")
+		(at 115 45 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "58a57cbe-a206-4b36-83df-ba9e7ade68e5")
+		(property "Reference" "U3"
+			(at 115 33 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "TLV75533PDBVR"
+			(at 115 57 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-5"
+			(at 115 45 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Datasheet" "~"
+			(at 115 45 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Description" "TLV75533PDBVR"
+			(at 115 45 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(pin "1"
+			(uuid "511dd90a-bc8c-4e11-8347-de6e2627e995")
+		)
+		(pin "2"
+			(uuid "7cbebbc3-afad-4d39-b144-533d9bdde392")
+		)
+		(pin "3"
+			(uuid "45e48cc4-f19a-49e7-adc5-7e21dd65fb9d")
+		)
+		(pin "5"
+			(uuid "78078eb0-61e3-4503-8b61-21f1fb3058dc")
+		)
+		(instances
+			(project "hux"
+				(path "/fef6db75-802f-4b68-806d-a4530399060a"
+					(reference "U3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "HUX:ST7789_Display")
+		(at 245 60 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "df4a8388-bcfe-415f-9605-c9459a87750f")
+		(property "Reference" "J2"
+			(at 245 48 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "ST7789_1.69_IPS"
+			(at 245 72 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical"
+			(at 245 60 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Datasheet" "~"
+			(at 245 60 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Description" "ST7789_1.69_IPS"
+			(at 245 60 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(pin "1"
+			(uuid "e30b39f7-07c1-455f-bdfa-328abf099952")
+		)
+		(pin "2"
+			(uuid "0d31c138-a95e-4352-b713-6eddf21482de")
+		)
+		(pin "3"
+			(uuid "63ebe90f-7889-4f0a-bfb4-14f06f0635ae")
+		)
+		(pin "4"
+			(uuid "fe62a098-4984-4403-8ea1-33561a6cedb1")
+		)
+		(pin "5"
+			(uuid "d0741456-b453-4983-880b-1143e86e5185")
+		)
+		(pin "6"
+			(uuid "12310eeb-1993-40af-9023-91b3d25fa19a")
+		)
+		(pin "7"
+			(uuid "cc6728bb-47fc-4fdc-8b8e-550ed27470a3")
+		)
+		(pin "8"
+			(uuid "346d90fa-0a71-4ee8-84de-254adbf49f26")
+		)
+		(instances
+			(project "hux"
+				(path "/fef6db75-802f-4b68-806d-a4530399060a"
+					(reference "J2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "HUX:INMP441")
+		(at 50 110 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "85520273-4054-4f50-bdac-0a76e117137f")
+		(property "Reference" "U4"
+			(at 50 98 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "INMP441"
+			(at 50 122 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Sensor_Audio:INMP441"
+			(at 50 110 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Datasheet" "~"
+			(at 50 110 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Description" "INMP441"
+			(at 50 110 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(pin "1"
+			(uuid "a6d815d1-5b8a-469e-abef-ee1c312b950d")
+		)
+		(pin "2"
+			(uuid "2d86354d-d2ed-4562-bc03-4231a7370072")
+		)
+		(pin "3"
+			(uuid "56e63392-d052-4f1d-9741-33d9abc8cc19")
+		)
+		(pin "4"
+			(uuid "129c93d0-c671-4ea2-a820-175d5cc8259c")
+		)
+		(pin "5"
+			(uuid "04f52c7a-efcd-41e1-a6d5-cef8b237a78d")
+		)
+		(pin "6"
+			(uuid "4b5df0a9-f344-43ff-bfa2-147e03b345b8")
+		)
+		(instances
+			(project "hux"
+				(path "/fef6db75-802f-4b68-806d-a4530399060a"
+					(reference "U4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "HUX:MAX98357A")
+		(at 115 110 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b7b160bf-b732-4222-9459-6d80024b7a35")
+		(property "Reference" "U5"
+			(at 115 98 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "MAX98357A"
+			(at 115 122 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Package_DFN_QFN:QFN-16-1EP_3x3mm_P0.5mm_EP1.7x1.7mm"
+			(at 115 110 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Datasheet" "~"
+			(at 115 110 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Description" "MAX98357A"
+			(at 115 110 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(pin "1"
+			(uuid "cf3c7745-c28f-40b8-821f-baa7cba5bc0c")
+		)
+		(pin "2"
+			(uuid "0c8ffaa9-1acb-4af0-8be1-3d5ec9f35bf7")
+		)
+		(pin "3"
+			(uuid "2dbb66f7-4fad-4eca-ac60-c44e7cabfa7d")
+		)
+		(pin "4"
+			(uuid "6cb5f7fd-89cf-4cea-8adc-165b3184fde4")
+		)
+		(pin "5"
+			(uuid "5dc3da45-a98f-4834-b7bf-b50f09d1de76")
+		)
+		(pin "6"
+			(uuid "a5d15b7d-b46e-4571-a86e-b4f11ea405d6")
+		)
+		(pin "7"
+			(uuid "a90e9b9d-816c-4b15-8f5f-2cd71e2b8488")
+		)
+		(pin "8"
+			(uuid "64faca44-2fb5-481e-ba21-e0f74a5e6712")
+		)
+		(pin "9"
+			(uuid "1b6ffbbe-17c0-4e93-9c82-90d594bd4909")
+		)
+		(instances
+			(project "hux"
+				(path "/fef6db75-802f-4b68-806d-a4530399060a"
+					(reference "U5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "HUX:Conn_01x02")
+		(at 145 110 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4eb6e822-1f5b-47fd-bc0e-1f70ddfd4af5")
+		(property "Reference" "J3"
+			(at 145 98 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "SPK_OUT"
+			(at 145 122 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Connector_JST:JST_PH_S2B-PH-K_1x02_P2.00mm_Horizontal"
+			(at 145 110 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Datasheet" "~"
+			(at 145 110 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Description" "SPK_OUT"
+			(at 145 110 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(pin "1"
+			(uuid "fd980090-c812-4484-9df0-5b89360c3728")
+		)
+		(pin "2"
+			(uuid "051e5ce1-a8ab-4731-a32c-19645184afd6")
+		)
+		(instances
+			(project "hux"
+				(path "/fef6db75-802f-4b68-806d-a4530399060a"
+					(reference "J3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "HUX:Conn_01x04")
+		(at 50 160 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4a5662c2-0e98-464b-afe5-0a8f60aba024")
+		(property "Reference" "J4"
+			(at 50 148 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "I2C_EXT"
+			(at 50 172 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
+			(at 50 160 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Datasheet" "~"
+			(at 50 160 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Description" "I2C_EXT"
+			(at 50 160 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(pin "1"
+			(uuid "19833b66-3919-410d-8bd9-73af28133f7f")
+		)
+		(pin "2"
+			(uuid "9cf4c8fa-32ad-4a78-88af-6d3ba31b12cf")
+		)
+		(pin "3"
+			(uuid "98bddb97-c729-49b6-adbd-de14e4af5fac")
+		)
+		(pin "4"
+			(uuid "c600c3c2-7b85-4b0c-ae2d-533c97161edd")
+		)
+		(instances
+			(project "hux"
+				(path "/fef6db75-802f-4b68-806d-a4530399060a"
+					(reference "J4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "HUX:SW_Push")
+		(at 100 160 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "18e2497c-519b-4044-9b43-3109a4d67948")
+		(property "Reference" "SW1"
+			(at 100 148 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "RESET"
+			(at 100 172 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_TL3342"
+			(at 100 160 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Datasheet" "~"
+			(at 100 160 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Description" "RESET"
+			(at 100 160 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(pin "1"
+			(uuid "59e8eda2-23b1-4439-bd21-7e37516fa72c")
+		)
+		(pin "2"
+			(uuid "31745c1d-69b4-47c3-be01-36fa91ce2923")
+		)
+		(instances
+			(project "hux"
+				(path "/fef6db75-802f-4b68-806d-a4530399060a"
+					(reference "SW1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "HUX:SW_Push")
+		(at 125 160 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5b7f7b0e-dff9-4cb9-9ce3-3de061623184")
+		(property "Reference" "SW2"
+			(at 125 148 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "BOOT"
+			(at 125 172 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_TL3342"
+			(at 125 160 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Datasheet" "~"
+			(at 125 160 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Description" "BOOT"
+			(at 125 160 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(pin "1"
+			(uuid "ef57a614-706e-454e-8d55-a6c28897d00d")
+		)
+		(pin "2"
+			(uuid "14d97d7d-c083-4df8-8088-5a7913298e25")
+		)
+		(instances
+			(project "hux"
+				(path "/fef6db75-802f-4b68-806d-a4530399060a"
+					(reference "SW2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "HUX:SK6812MINI-E")
+		(at 245 110 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0038a8c4-86b0-443f-a039-7e3b1ae66381")
+		(property "Reference" "LED1"
+			(at 245 98 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "SK6812MINI-E"
+			(at 245 122 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "LED_SMD:LED_SK6812MINI-E"
+			(at 245 110 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Datasheet" "~"
+			(at 245 110 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Description" "SK6812MINI-E"
+			(at 245 110 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(pin "1"
+			(uuid "c75455c9-99c4-4e12-8a41-a68b4fb638b7")
+		)
+		(pin "2"
+			(uuid "51eed48a-570b-4c86-b7c0-ae3bc8d5e75e")
+		)
+		(pin "3"
+			(uuid "95632d9b-732f-4341-acfc-9f00fcd197ae")
+		)
+		(pin "4"
+			(uuid "7d02bd74-2356-4287-bc24-76612ea31d2c")
+		)
+		(instances
+			(project "hux"
+				(path "/fef6db75-802f-4b68-806d-a4530399060a"
+					(reference "LED1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "HUX:SK6812MINI-E")
+		(at 245 125 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ecbd557a-129e-4f57-831c-4d0e9f364a7a")
+		(property "Reference" "LED2"
+			(at 245 113 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "SK6812MINI-E"
+			(at 245 137 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "LED_SMD:LED_SK6812MINI-E"
+			(at 245 125 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Datasheet" "~"
+			(at 245 125 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Description" "SK6812MINI-E"
+			(at 245 125 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(pin "1"
+			(uuid "7d23d9df-833a-4c62-99e7-bfa7e01ab095")
+		)
+		(pin "2"
+			(uuid "c31bb4b7-45e4-4218-9b82-8eecb78995e1")
+		)
+		(pin "3"
+			(uuid "be27b3c8-e57b-4e37-8bdf-86b9cc843828")
+		)
+		(pin "4"
+			(uuid "0e8c6083-1ee3-48c3-a0de-c19835aaa336")
+		)
+		(instances
+			(project "hux"
+				(path "/fef6db75-802f-4b68-806d-a4530399060a"
+					(reference "LED2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "HUX:SK6812MINI-E")
+		(at 245 140 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ec269431-52b7-4907-8dc4-1300709c054c")
+		(property "Reference" "LED3"
+			(at 245 128 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "SK6812MINI-E"
+			(at 245 152 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "LED_SMD:LED_SK6812MINI-E"
+			(at 245 140 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Datasheet" "~"
+			(at 245 140 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Description" "SK6812MINI-E"
+			(at 245 140 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(pin "1"
+			(uuid "89a0fa73-9fd0-422f-8391-d5e4c64e5041")
+		)
+		(pin "2"
+			(uuid "d4ac1993-3738-44e5-8ec7-efe4f6b837da")
+		)
+		(pin "3"
+			(uuid "0213e4eb-fe4d-4e26-b9e6-a6cea763e2de")
+		)
+		(pin "4"
+			(uuid "16950c5e-194b-4dc0-a824-91c93ca26580")
+		)
+		(instances
+			(project "hux"
+				(path "/fef6db75-802f-4b68-806d-a4530399060a"
+					(reference "LED3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "HUX:SK6812MINI-E")
+		(at 245 155 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b56958f1-329d-46bb-a352-b7f56708cc96")
+		(property "Reference" "LED4"
+			(at 245 143 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "SK6812MINI-E"
+			(at 245 167 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "LED_SMD:LED_SK6812MINI-E"
+			(at 245 155 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Datasheet" "~"
+			(at 245 155 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Description" "SK6812MINI-E"
+			(at 245 155 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(pin "1"
+			(uuid "77d6de05-d739-4fd8-8647-08018820dc2e")
+		)
+		(pin "2"
+			(uuid "432b6a5b-20c3-486f-9474-6f3ff518e580")
+		)
+		(pin "3"
+			(uuid "4c9f4523-e645-4370-b260-a39377f8a585")
+		)
+		(pin "4"
+			(uuid "761fa712-845f-420e-babd-90f79bf327f2")
+		)
+		(instances
+			(project "hux"
+				(path "/fef6db75-802f-4b68-806d-a4530399060a"
+					(reference "LED4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "HUX:SK6812MINI-E")
+		(at 245 170 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "005ea11c-722c-494e-a8f1-0d94b98ac48f")
+		(property "Reference" "LED5"
+			(at 245 158 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "SK6812MINI-E"
+			(at 245 182 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "LED_SMD:LED_SK6812MINI-E"
+			(at 245 170 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Datasheet" "~"
+			(at 245 170 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Description" "SK6812MINI-E"
+			(at 245 170 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(pin "1"
+			(uuid "b80f1d71-a074-48c8-b100-4e0f76130806")
+		)
+		(pin "2"
+			(uuid "57d3d50a-ad42-4279-a0d7-995941d9766c")
+		)
+		(pin "3"
+			(uuid "c66911e6-3057-4eb6-a29f-003f06fb2011")
+		)
+		(pin "4"
+			(uuid "7b4afac1-98b8-4848-86e4-f65d8fa08e51")
+		)
+		(instances
+			(project "hux"
+				(path "/fef6db75-802f-4b68-806d-a4530399060a"
+					(reference "LED5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "HUX:SK6812MINI-E")
+		(at 245 185 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "cc43adb7-322f-471c-855b-98ba54eae7bd")
+		(property "Reference" "LED6"
+			(at 245 173 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "SK6812MINI-E"
+			(at 245 197 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "LED_SMD:LED_SK6812MINI-E"
+			(at 245 185 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Datasheet" "~"
+			(at 245 185 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Description" "SK6812MINI-E"
+			(at 245 185 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(pin "1"
+			(uuid "b44ea2ad-6924-415e-a036-c91ce2e11242")
+		)
+		(pin "2"
+			(uuid "24bb53ef-3025-41aa-b991-dbadfc19669c")
+		)
+		(pin "3"
+			(uuid "4af358e8-d552-490e-9d4b-6ea46f7a23f1")
+		)
+		(pin "4"
+			(uuid "852685b7-6b91-4932-88d7-fcf6bd22c0c1")
+		)
+		(instances
+			(project "hux"
+				(path "/fef6db75-802f-4b68-806d-a4530399060a"
+					(reference "LED6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "HUX:SK6812MINI-E")
+		(at 245 200 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f9ff5394-ea7b-424e-aa12-c65d521d2276")
+		(property "Reference" "LED7"
+			(at 245 188 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "SK6812MINI-E"
+			(at 245 212 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "LED_SMD:LED_SK6812MINI-E"
+			(at 245 200 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Datasheet" "~"
+			(at 245 200 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Description" "SK6812MINI-E"
+			(at 245 200 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(pin "1"
+			(uuid "e7cb1b6c-6f1a-40b4-82f8-6a5afe05e6fd")
+		)
+		(pin "2"
+			(uuid "f6a7e2fa-93c2-4b0f-b67b-ce0af8dbc8c4")
+		)
+		(pin "3"
+			(uuid "489c0d01-b120-47dd-9be8-c1f602ec5572")
+		)
+		(pin "4"
+			(uuid "7740ea48-d169-4c2c-9cd9-dc6c50406c62")
+		)
+		(instances
+			(project "hux"
+				(path "/fef6db75-802f-4b68-806d-a4530399060a"
+					(reference "LED7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "HUX:SK6812MINI-E")
+		(at 245 215 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8b3f2dde-ce78-4b46-8f7a-912a86819f75")
+		(property "Reference" "LED8"
+			(at 245 203 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "SK6812MINI-E"
+			(at 245 227 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "LED_SMD:LED_SK6812MINI-E"
+			(at 245 215 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Datasheet" "~"
+			(at 245 215 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(property "Description" "SK6812MINI-E"
+			(at 245 215 0)
+			(effects (font (size 1.27 1.27)))
+			(hide yes)
+		)
+		(pin "1"
+			(uuid "dc2a3458-51de-4e6a-b095-1da4ee9c9a79")
+		)
+		(pin "2"
+			(uuid "466a749d-8b4a-4f37-afb1-569dfd7e9efa")
+		)
+		(pin "3"
+			(uuid "1614ec22-bb68-4bfa-a707-2c43c3a06cb4")
+		)
+		(pin "4"
+			(uuid "2ebe55e4-a178-4b15-a8ce-ec2d77699877")
+		)
+		(instances
+			(project "hux"
+				(path "/fef6db75-802f-4b68-806d-a4530399060a"
+					(reference "LED8")
+					(unit 1)
+				)
+			)
+		)
+	)
+
+	(label "+5V"
+		(at 50 35 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "beb17e5b-d8a2-4dc0-8f1a-abaeb571feb3")
+	)
+	(label "+5V"
+		(at 115 35 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "d4faffde-dc2f-4fcf-95b0-be8cb5e2c53e")
+	)
+	(label "+3V3"
+		(at 125 45 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "742731a7-37b2-4b30-b4f2-5231257d1644")
+	)
+	(label "+3V3"
+		(at 150 65 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "9c233d61-88b5-4a6a-a42f-bea18ae20aac")
+	)
+	(label "GND"
+		(at 50 55 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "aeda7649-d2a4-4d8e-9264-676ac60c5fbd")
+	)
+	(label "GND"
+		(at 115 55 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "37acd461-6757-4c81-bce5-7b6044d6715c")
+	)
+	(label "GND"
+		(at 150 115 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "92cf6186-8e1c-496e-bfa6-75c4e851defc")
+	)
+	(label "USB_D_P"
+		(at 95 45 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "d8b0f558-3faf-4401-861c-7a359061ef4a")
+	)
+	(label "USB_D_N"
+		(at 95 50 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "b531584b-1923-4b16-9c06-64c9614d59b1")
+	)
+	(label "USB_D_P"
+		(at 150 90 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "07d49116-0c50-4783-9eba-119a96c461d2")
+	)
+	(label "USB_D_N"
+		(at 150 95 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "3140185d-3edc-4be0-aeab-dc17924de9c6")
+	)
+	(label "DISP_SCK"
+		(at 190 65 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "287f3a2b-929e-4f98-83d1-9026fa2685a5")
+	)
+	(label "DISP_SDA"
+		(at 190 70 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "88740a38-056e-421b-9305-682cc3263c49")
+	)
+	(label "DISP_RES"
+		(at 190 75 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "f3a144ea-173a-4e7f-b827-67603a1bc424")
+	)
+	(label "DISP_DC"
+		(at 190 80 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "d9888c0c-65ca-46e3-9e93-07c104686e91")
+	)
+	(label "DISP_CS"
+		(at 190 85 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "57f34500-0283-42b0-8215-88d8edeadc22")
+	)
+	(label "DISP_BLK"
+		(at 190 90 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "e3d8bd5b-3005-4008-8de4-72cd0d86d8d2")
+	)
+	(label "DISP_SCK"
+		(at 230 56 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "528be19a-4943-4eee-a06c-1e581fd2608b")
+	)
+	(label "DISP_SDA"
+		(at 230 59 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "158ee622-a234-46fb-9254-efca4fa208f3")
+	)
+	(label "DISP_RES"
+		(at 230 61 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "94b39ec4-e570-4760-b14c-82a1c06316df")
+	)
+	(label "DISP_DC"
+		(at 230 64 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "dd8a8a8d-5d24-4c3a-98db-1555594952b6")
+	)
+	(label "DISP_CS"
+		(at 230 66 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "8875dbbd-1054-4547-913d-16cbc210d81b")
+	)
+	(label "DISP_BLK"
+		(at 230 69 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "74dca7e6-7d37-4fc1-a1b4-42c6290e6eef")
+	)
+	(label "MIC_SD"
+		(at 65 106 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "c44b14b8-b433-43bc-b3c4-bc4401712a1c")
+	)
+	(label "MIC_WS"
+		(at 65 109 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "a06378dc-c288-45c5-8510-06eae8461838")
+	)
+	(label "MIC_SCK"
+		(at 65 112 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "cccc46dc-e673-402d-a9e6-097bdd171cc2")
+	)
+	(label "MIC_SD"
+		(at 150 98 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "e2b5c60a-94d8-47cf-bee7-dae1f2893fae")
+	)
+	(label "MIC_WS"
+		(at 150 103 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "34d214a1-6ff1-4776-992f-73ddb067a1ea")
+	)
+	(label "MIC_SCK"
+		(at 150 108 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "4123b8ee-de77-4911-a047-de77862cf847")
+	)
+	(label "SPK_LRC"
+		(at 100 107 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "caf8bba7-02d4-498d-b96a-ae6c9dd75216")
+	)
+	(label "SPK_BCLK"
+		(at 100 110 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "de18f853-55fa-461b-9cf9-37e2d5b5f6d3")
+	)
+	(label "SPK_DIN"
+		(at 100 113 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "e9743b64-8ae1-451a-905e-3251b5fadf9d")
+	)
+	(label "SPK_LRC"
+		(at 190 108 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "baca5b26-33d0-4793-bbb1-ebba6eae7a0f")
+	)
+	(label "SPK_BCLK"
+		(at 190 103 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "346e8281-b7fb-496f-8583-3cc7113f4f8f")
+	)
+	(label "SPK_DIN"
+		(at 190 98 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "f0d9e0e6-5f0e-4bdb-a74e-aa3e766c9e44")
+	)
+	(label "NEOPIXEL"
+		(at 190 113 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "fc195541-15d8-4519-ae15-82a8155b1d3e")
+	)
+	(label "NEOPIXEL"
+		(at 230 110 0)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)))
+		(uuid "531108a3-b588-47f7-bd4b-3c5009ba8c1a")
+	)
+
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)
