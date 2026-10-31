@@ -1,6 +1,32 @@
+# Operating System
 .DS_Store
-*.rpt
-__pycache__/
-*.tmp
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Remotion & Node.js
 node_modules/
 .remotion/
+.cache/
+out/
+dist/
+build/
+
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# KiCad temporary & auto-backup files
+*.kicad_prb
+*.kicad_sch-bak
+*.kicad_pcb-bak
+*-save.kicad_sch
+*-save.kicad_pcb
+_autosave-*
+*.bak
+*.lck
+*.rpt
+*.tmp
+fp-info-cache
