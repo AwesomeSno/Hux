@@ -1,6 +1,18 @@
 import React from "react";
 import { Composition } from "remotion";
 import { HuxIntroReel } from "./HuxIntroReel";
+import {
+  Sketch01,
+  Sketch02,
+  Sketch03,
+  Sketch04,
+  Sketch05,
+  Sketch06,
+  Sketch07,
+  Sketch08,
+  Sketch09,
+  Sketch10,
+} from "./JournalSketches";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -12,6 +24,87 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         width={1080}
         height={1920}
+      />
+
+      <Composition
+        id="InitialSketch01"
+        component={Sketch01}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="InitialSketch02"
+        component={Sketch02}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="InitialSketch03"
+        component={Sketch03}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="InitialSketch04"
+        component={Sketch04}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="InitialSketch05"
+        component={Sketch05}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="InitialSketch06"
+        component={Sketch06}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="InitialSketch07"
+        component={Sketch07}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="InitialSketch08"
+        component={Sketch08}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="InitialSketch09"
+        component={Sketch09}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="InitialSketch10"
+        component={Sketch10}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
       />
     </>
   );

@@ -46,3 +46,4 @@
 - **Audio Voiceover:** [`Videos/hux_intro_voice.mp3`](file:///Users/harinandanjv/Projects/01HackClub/Half%20Life/Hux/Videos/hux_intro_voice.mp3)
 - **Subtitles (WebVTT):** [`Videos/hux_intro_subtitles.vtt`](file:///Users/harinandanjv/Projects/01HackClub/Half%20Life/Hux/Videos/hux_intro_subtitles.vtt)
 - **Remotion Project:** [`hux-reel/`](file:///Users/harinandanjv/Projects/01HackClub/Half%20Life/Hux/hux-reel/)
+
