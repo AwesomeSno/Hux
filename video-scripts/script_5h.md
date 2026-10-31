@@ -43,3 +43,4 @@
 - **Audio Voiceover:** [`Videos/hux_5h_voice.mp3`](file:///Users/harinandanjv/Projects/01HackClub/Half%20Life/Hux/Videos/hux_5h_voice.mp3)
 - **Subtitles (WebVTT):** [`Videos/hux_5h_subtitles.vtt`](file:///Users/harinandanjv/Projects/01HackClub/Half%20Life/Hux/Videos/hux_5h_subtitles.vtt)
 - **Remotion Component:** [`hux-reel/src/Hux5HourReel.tsx`](file:///Users/harinandanjv/Projects/01HackClub/Half%20Life/Hux/hux-reel/src/Hux5HourReel.tsx)
+

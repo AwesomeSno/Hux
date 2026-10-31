@@ -1,0 +1,40 @@
+1
+00:00:00,050 --> 00:00:00,880
+Hey everyone!
+
+2
+00:00:00,880 --> 00:00:06,815
+This is my 5-hour checkpoint video for Hux, my desktop AI companion for Hack Club's Half Life.
+
+3
+00:00:06,815 --> 00:00:08,956
+Here is what I have built and planned so far.
+
+4
+00:00:08,956 --> 00:00:15,673
+I ditched lifeless smart speakers to build an expressive companion powered by an ESP32-S3.
+
+5
+00:00:15,673 --> 00:00:22,923
+It features a crisp color IPS display with animated vector eyes that blink, look around, and react in real time.
+
+6
+00:00:22,923 --> 00:00:28,782
+Surrounding the screen is an 8-LED Arc-Reactor halo ring for instant ambient feedback.
+
+7
+00:00:28,782 --> 00:00:42,239
+For audio, I designed a digital I2S voice pipeline with an INMP441 mic and a MAX98357A amplifier driving a 3W speaker, keeping it free from Wi-Fi RF interference.
+
+8
+00:00:42,239 --> 00:00:49,782
+Hux connects directly to my local Home Assistant server over WebSockets with sub-15ms response times and zero cloud lag.
+
+9
+00:00:49,782 --> 00:00:55,706
+Next up for hour 10: routing the PCB in KiCad and writing the display driver firmware.
+
+10
+00:00:55,706 --> 00:00:58,195
+Thanks for watching, and see you at the next checkpoint!
+
