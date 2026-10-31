@@ -848,7 +848,7 @@ export const Sketch10: React.FC = () => (
         </div>
 
         <div style={{ padding: 16, borderRadius: 12, backgroundColor: "#ecfdf5", border: `1.5px solid #a7f3d0`, textAlign: "center", fontFamily: C.mono, fontSize: 13, color: C.green, fontWeight: 700 }}>
-          ✔ Initial 5 hours of planning complete
+          ✔ Initial 10 hours of planning complete
         </div>
       </div>
     </div>

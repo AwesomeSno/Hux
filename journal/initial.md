@@ -1,12 +1,12 @@
 # Hux - Devlog
 
-## First 5 Hours
+## First 10 Hours
 
 I've always wanted a smart assistant on my desk that actually feels alive instead of just a boring plastic speaker puck. For Half Life, I'm building Hux—a small desktop bot inspired by Jarvis with animated eyes on a little color screen, an LED ring around it, and voice control that connects straight to my Home Assistant setup.
 
-Since this is just the first 5 hours, I spent the time sketching out the basic idea, figuring out what chips to use, and planning how all the pieces will fit together.
+Since this is the first 10 hours, I spent the time sketching out the basic idea, figuring out what chips to use, and planning how all the pieces will fit together.
 
-Here are the sketches from the first 5 hours.
+Here are the sketches from the first 10 hours.
 
 ---
 
@@ -90,8 +90,8 @@ Mapped out the rough list of hardware parts needed so we know everything is read
 
 ---
 
-### Summary of First 5 Hours
+### Summary of First 10 Hours
 
-Total time logged: 5 hours.
+Total time logged: 10 hours.
 
 Initial brainstorming, feature list, and block diagrams are done. Next up is opening KiCad to build the schematic and start routing the board.
