@@ -1,0 +1,10 @@
+{
+  "name": "hux-reel",
+  "version": "1.0.0",
+  "description": "Hux Introduction Reel",
+  "private": true,
+  "scripts": {
+    "dev": "remotion studio",
+    "build": "remotion bundle"
+  }
+}

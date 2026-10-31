@@ -1,0 +1,28 @@
+1
+00:00:00,050 --> 00:00:04,675
+Most smart home hubs are just lifeless black cylinders with zero personality.
+
+2
+00:00:04,675 --> 00:00:09,814
+For Hack Club's Half Life, I wanted to build something with actual life and presence.
+
+3
+00:00:09,814 --> 00:00:14,780
+Meet Hux, a desktop AI smart home companion inspired by Jarvis.
+
+4
+00:00:14,780 --> 00:00:23,472
+At its center is a color IPS display showing expressive animated eye emotions, encircled by an Arc-Reactor RGB status halo.
+
+5
+00:00:23,472 --> 00:00:33,692
+Powered by an ESP32-S3, it controls Home Assistant locally over Wi-Fi with zero cloud lag, paired with an I2S digital mic and speaker.
+
+6
+00:00:33,692 --> 00:00:36,770
+And it's all designed under a sixty-five dollar budget.
+
+7
+00:00:36,770 --> 00:00:40,474
+Now, let me walk you through the basics of how this comes together!
+
