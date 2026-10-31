@@ -1,6 +1,7 @@
 import React from "react";
 import { Composition } from "remotion";
 import { HuxIntroReel } from "./HuxIntroReel";
+import { Hux5HourReel } from "./Hux5HourReel";
 import {
   Sketch01,
   Sketch02,
@@ -17,6 +18,15 @@ import {
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      <Composition
+        id="Hux5HourReel"
+        component={Hux5HourReel}
+        durationInFrames={1600}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+
       <Composition
         id="HuxIntroReel"
         component={HuxIntroReel}

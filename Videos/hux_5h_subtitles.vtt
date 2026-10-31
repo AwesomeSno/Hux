@@ -1,0 +1,36 @@
+1
+00:00:00,050 --> 00:00:01,011
+Hey everyone!
+
+2
+00:00:01,011 --> 00:00:03,761
+Quick update on Hux for Hack Club's Half Life.
+
+3
+00:00:03,761 --> 00:00:08,852
+I just wrapped up the first 5 hours of planning and architecture, and here is how it is shaping up.
+
+4
+00:00:08,852 --> 00:00:18,784
+At the core is an ESP32-S3 driving a color display with animated vector eyes, encircled by an eight-LED Arc-Reactor halo ring.
+
+5
+00:00:18,784 --> 00:00:32,818
+For audio, I went with a 100% digital I2S setup using an INMP441 MEMS microphone and a MAX98357A amplifier with a 3W speaker, eliminating RF buzz from the Wi-Fi antenna.
+
+6
+00:00:32,818 --> 00:00:41,124
+Everything connects directly to my local Home Assistant server over WebSockets with instant sub-15ms response and zero cloud lag.
+
+7
+00:00:41,124 --> 00:00:46,738
+The power tree is sorted with USB-C and ESD protection on a 72-millimeter board.
+
+8
+00:00:46,738 --> 00:00:51,068
+Next up: routing the board in KiCad and writing the display firmware.
+
+9
+00:00:51,068 --> 00:00:52,113
+Thanks for watching!
+
