@@ -1,106 +1,97 @@
 # Hux - Devlog
 
-## Initial Conception & Architecture
+## First 5 Hours
 
-I've always wanted a proper smart desktop assistant that actually feels alive instead of just another boring black speaker puck sitting on my desk. For Half Life, I'm building Hux—an expressive desktop companion inspired by Jarvis with animated vector eyes on a color IPS display, an Arc-Reactor RGB ring, and local voice control hooked straight into Home Assistant.
+I've always wanted a smart assistant on my desk that actually feels alive instead of just a boring plastic speaker puck. For Half Life, I'm building Hux—a small desktop bot inspired by Jarvis with animated eyes on a little color screen, an LED ring around it, and voice control that connects straight to my Home Assistant setup.
 
-The whole thing needs to run locally without cloud lag, look clean on a desk, and stay strictly under the $65 Half Life budget limit.
+Since this is just the first 5 hours, I spent the time sketching out the basic idea, figuring out what chips to use, and planning how all the pieces will fit together.
 
-Here is the breakdown of the initial concept and the 10 engineering sketches I put together.
+Here are the sketches from the first 5 hours.
 
 ---
 
 ### 01: Why normal smart speakers suck
 
-I started by breaking down what's wrong with commercial smart speakers like Echo or Nest. They're just lifeless plastic cylinders with a single blinking dot, you have no clue what they're doing, and routing every request through the cloud adds annoying delay. Hux fixes this by giving it an expressive face on a display, an ambient light ring, and instant local Wi-Fi control.
+Most smart speakers on the market are just plain black cylinders with a tiny LED on top. You ask them something, you wait for cloud servers, and they have zero personality. I wanted Hux to have a face, show what it's doing, and respond instantly over local Wi-Fi.
 
-![Fig 01: Concept Teardown](images/initial_01_problem_lifeless_speakers.png)
-
----
-
-### 02: Hardware block diagram
-
-Mapped out the full hardware setup and how everything connects. The ESP32-S3 runs the show, driving the ST7789 display over SPI, an 8-LED NeoPixel ring via RMT, an INMP441 digital microphone, and a MAX98357A Class-D amplifier with a 3W speaker over two separate I2S buses. Power comes in through USB-C with onboard 3.3V regulation.
-
-![Fig 02: System Architecture](images/initial_02_hux_system_block_diagram.png)
+![Hour 01 Sketch](images/initial_01_problem_lifeless_speakers.png)
 
 ---
 
-### 03: ESP32-S3 pin budget
+### 02: Basic system diagram
 
-I picked the ESP32-S3 because it has plenty of horsepower (dual 240MHz cores), built-in Wi-Fi, and enough hardware peripherals to handle a fast display and two separate audio streams simultaneously. Mapped out every single GPIO pin so SPI, I2S RX, I2S TX, NeoPixels, and I2C don't step on each other.
+Layed out the main parts. An ESP32-S3 handles everything: it drives a small color IPS screen for the face, controls an 8-LED ring around the bezel, listens through a digital mic, and plays audio through a small speaker. Everything is powered over USB-C.
 
-![Fig 03: ESP32-S3 Pinout Budget](images/initial_03_esp32s3_pinout_budget.png)
-
----
-
-### 04: Expressive face state machine
-
-Static avatars look robotic, so I planned the eyes as a dynamic state machine with procedural curves. It has idle blinking, a wide-eyed listening state, looking-up thinking states, and a speaking animation that bounces with the audio waveform. Because it's drawn with code rather than static images, it runs smooth at 60fps and takes barely any flash memory.
-
-![Fig 04: Face Animation State Machine](images/initial_04_expressive_face_state_machine.png)
+![Hour 02 Sketch](images/initial_02_hux_system_block_diagram.png)
 
 ---
 
-### 05: Arc-Reactor halo ring
+### 03: Picking the chip and figuring out pins
 
-Sketched out an 8-LED circular ring using SK6812 MINI-E addressable NeoPixels placed directly around the display bezel. It acts as an ambient status light—spinning cyan when listening for wake words, breathing when processing, and showing volume levels—diffused through a 3D-printed frosted ring.
+Decided to go with the ESP32-S3 since it already has Wi-Fi, runs fast enough to draw smooth animations, and has enough pins for the display, audio in/out, and LEDs without running out of GPIOs.
 
-![Fig 05: Arc-Reactor Halo](images/initial_05_arc_reactor_halo_optics.png)
-
----
-
-### 06: Digital I2S audio pipeline
-
-Analog audio on microcontroller boards always picks up buzzing from Wi-Fi bursts, so I went 100% digital. An INMP441 MEMS microphone handles voice capture over I2S, and a MAX98357A amplifier decodes digital audio and powers the 3W micro-speaker. No analog mic lines on the board means zero RF hum.
-
-![Fig 06: Audio Pipeline](images/initial_06_voice_pipeline_i2s_dsp.png)
+![Hour 03 Sketch](images/initial_03_esp32s3_pinout_budget.png)
 
 ---
 
-### 07: Home Assistant local integration
+### 04: Planning the face animations
 
-Zero cloud dependencies. Hux connects directly to my local Home Assistant server over Wi-Fi using authenticated WebSockets. When I ask it to toggle a light or check a sensor, it executes over the local LAN in under 15ms without bouncing traffic to an external server.
+Sketched out how the eyes should behave. Instead of using static pictures, I want to draw them with simple code shapes so they can blink naturally, look around, squint when thinking, and bounce when speaking at 60fps.
 
-![Fig 07: Home Assistant Architecture](images/initial_07_home_assistant_local_api.png)
-
----
-
-### 08: Power delivery and ESD protection
-
-Designed the power input for everyday desk use. A standard 16-pin USB-C receptacle with 5.1k pull-downs negotiates 5V from any USB-C charger. Added a USBLC6-2SC6 TVS diode array to protect the USB data lines from static shocks when plugging in cables, plus a TLV75533 3.3V LDO with ceramic decoupling caps to keep the power rail steady during Wi-Fi spikes.
-
-![Fig 08: Power Delivery & ESD](images/initial_08_power_delivery_and_esd.png)
+![Hour 04 Sketch](images/initial_04_expressive_face_state_machine.png)
 
 ---
 
-### 09: Board layout and ergonomics
+### 05: The LED halo ring
 
-Set the PCB form factor to 72mm × 72mm with rounded corners and four M3 mounting holes. The screen is centered right where you look, and the USB-C port sits at the bottom edge so the power cable plugs straight in from behind without cluttering the desk.
+Added an 8-LED ring around the screen bezel like an Arc-Reactor. It's meant to give quick visual feedback—pulsing when it hears a wake word, breathing when it's processing, and showing volume levels.
 
-![Fig 09: Mechanical Floorplan](images/initial_09_pcb_floorplan_ergonomics.png)
-
----
-
-### 10: BOM and Half Life budget check
-
-Checked every part against JLCPCB and LCSC pricing to make sure we stay strictly under the $65 Half Life limit. 
-
-- 5x custom PCBs + SMT assembly: ~$16.00
-- ESP32-S3 module: ~$6.50
-- ST7789 IPS display: ~$4.50
-- INMP441 mic: ~$1.80
-- MAX98357A amp + speaker: ~$3.20
-- SK6812 LEDs + passives: ~$2.50
-- Direct shipping & taxes: ~$15.00
-- **Total: ~$49.50**
-
-Leaves about $15.50 of headroom under the $65 cap for filament and hardware.
-
-![Fig 10: Budget & BOM](images/initial_10_half_life_budget_bom.png)
+![Hour 05 Sketch](images/initial_05_arc_reactor_halo_optics.png)
 
 ---
 
-### Summary & Next Steps
+### 06: Mic and speaker setup
 
-Initial planning and architecture are locked in. The system block diagram, pinout, audio circuits, display state machine, and PCB envelope are all mapped out and safely under budget. Next up is routing the board in KiCad and writing the face animation firmware.
+Planned the audio circuit using an INMP441 digital microphone for listening and a MAX98357A amplifier for a small 3W speaker. Going full digital over I2S means we won't get any annoying buzzing or hum from the Wi-Fi antenna.
+
+![Hour 06 Sketch](images/initial_06_voice_pipeline_i2s_dsp.png)
+
+---
+
+### 07: Connecting to Home Assistant
+
+The plan is to talk directly to Home Assistant over local Wi-Fi with WebSockets. That way toggling lights or asking for room temperatures happens in under 20ms without any packets ever leaving the local network.
+
+![Hour 07 Sketch](images/initial_07_home_assistant_local_api.png)
+
+---
+
+### 08: USB-C power
+
+Simple power circuit: a USB-C connector with standard 5.1k resistors so it works with any cable or charger, a 3.3V regulator to power the ESP32 and screen, and basic ESD diodes to protect against static shocks when plugging it in.
+
+![Hour 08 Sketch](images/initial_08_power_delivery_and_esd.png)
+
+---
+
+### 09: Board shape and sizing
+
+Roughly sized the board around 72mm x 72mm so it fits nicely on a desk. The screen sits right in the middle, mounting holes go in the corners, and the USB-C port sits at the bottom edge so the cord plugs straight into the back.
+
+![Hour 09 Sketch](images/initial_09_pcb_floorplan_ergonomics.png)
+
+---
+
+### 10: Parts planning and wrap-up
+
+Mapped out the rough list of hardware parts needed so we know everything is ready to order and fits together. Now that the basic concept and block diagrams are sorted, the next step is jumping into KiCad to draw the schematic.
+
+![Hour 10 Sketch](images/initial_10_half_life_budget_bom.png)
+
+---
+
+### Summary of First 5 Hours
+
+Total time logged: 5 hours.
+
+Initial brainstorming, feature list, and block diagrams are done. Next up is opening KiCad to build the schematic and start routing the board.
