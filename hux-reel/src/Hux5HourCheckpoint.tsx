@@ -8,24 +8,19 @@ import {
   staticFile,
 } from "remotion";
 
-const THEME = {
-  bg: "#06070a",
-  cardBg: "rgba(18, 22, 31, 0.8)",
-  cardBorder: "rgba(255, 255, 255, 0.12)",
-  pillBg: "rgba(10, 14, 22, 0.9)",
-  pillBorder: "rgba(0, 240, 255, 0.3)",
-  textPrimary: "#f5f7fa",
-  textSecondary: "#8b949e",
-  cyan: "#00f0ff",
-  cyanGlow: "rgba(0, 240, 255, 0.4)",
-  gold: "#ffb703",
-  green: "#00f5a0",
-  red: "#ff4d4d",
+const C = {
+  bg: "#08090d",
+  surface: "rgba(16, 20, 28, 0.85)",
+  border: "rgba(255, 255, 255, 0.12)",
+  textMain: "#ffffff",
+  textMuted: "#94a3b8",
+  cyan: "#38bdf8",
+  cyanGlow: "rgba(56, 189, 248, 0.35)",
+  amber: "#f59e0b",
+  green: "#10b981",
+  mono: "'SF Mono', Monaco, 'JetBrains Mono', Menlo, Consolas, monospace",
+  sans: "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', system-ui, sans-serif",
 };
-
-const FONT_FAMILY =
-  "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', system-ui, sans-serif";
-const FONT_MONO = "'SF Mono', Monaco, Menlo, 'JetBrains Mono', monospace";
 
 interface Subtitle {
   start: number;
@@ -93,717 +88,660 @@ export const Hux5HourCheckpoint: React.FC = () => {
   const totalFrames = 1770;
   const progress = Math.min(1, frame / totalFrames);
 
-  const ambientPulse = 0.8 + 0.2 * Math.sin(frame * 0.08);
-
+  // Subtitle cue
   const currentSub = SUBTITLES.find((s) => frame >= s.start && frame < s.end);
+
+  // Animated vector eye logic
+  const blinkCycle = frame % 90;
+  const eyeHeight = blinkCycle > 82 ? interpolate(blinkCycle, [82, 86, 90], [36, 4, 36]) : 36;
+  const lookX = Math.sin(frame * 0.05) * 12;
 
   return (
     <div
       style={{
         width: "100%",
         height: "100%",
-        backgroundColor: THEME.bg,
-        color: THEME.textPrimary,
-        fontFamily: FONT_FAMILY,
+        backgroundColor: C.bg,
+        color: C.textMain,
+        fontFamily: C.sans,
         position: "relative",
         overflow: "hidden",
       }}
     >
-      {/* Background Audio */}
+      {/* Audio Tracks */}
       <Audio src={staticFile("hux_5h_checkpoint_voice.mp3")} volume={1.0} />
-      <Audio src={staticFile("bg-music.mp3")} volume={0.16} />
+      <Audio src={staticFile("bg-music.mp3")} volume={0.14} />
 
-      {/* Top Header: Dynamic Island Pill */}
+      {/* Background Soft Studio Lighting */}
+      <div
+        style={{
+          position: "absolute",
+          width: 900,
+          height: 900,
+          borderRadius: "50%",
+          top: "35%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          background: "radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(8, 9, 13, 0) 70%)",
+          filter: "blur(60px)",
+          pointerEvents: "none",
+        }}
+      />
+
+      {/* Top Header: Minimalist Studio Island */}
       <div
         style={{
           position: "absolute",
           top: 64,
-          left: 0,
-          right: 0,
+          left: 56,
+          right: 56,
           display: "flex",
-          justifyContent: "center",
-          zIndex: 50,
+          justifyContent: "space-between",
+          alignItems: "center",
+          zIndex: 60,
         }}
       >
-        <div
-          style={{
-            backgroundColor: THEME.pillBg,
-            border: `1.5px solid ${THEME.pillBorder}`,
-            borderRadius: 30,
-            padding: "14px 28px",
-            display: "flex",
-            alignItems: "center",
-            gap: 14,
-            boxShadow: `0 8px 32px ${THEME.cyanGlow}`,
-            backdropFilter: "blur(20px)",
-          }}
-        >
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <div
             style={{
               width: 10,
               height: 10,
               borderRadius: "50%",
-              backgroundColor: THEME.cyan,
-              boxShadow: `0 0 12px ${THEME.cyan}`,
-              transform: `scale(${ambientPulse})`,
+              backgroundColor: C.cyan,
+              boxShadow: `0 0 10px ${C.cyan}`,
             }}
           />
           <span
             style={{
-              fontFamily: FONT_MONO,
+              fontFamily: C.mono,
               fontSize: 18,
               fontWeight: 700,
               letterSpacing: 2,
-              color: THEME.cyan,
-              textTransform: "uppercase",
+              color: C.textMain,
             }}
           >
-            HUX // 5 HOUR CHECKPOINT
+            HUX // CHECKPOINT 01
           </span>
-          <span
-            style={{
-              fontFamily: FONT_MONO,
-              fontSize: 14,
-              backgroundColor: "rgba(255, 183, 3, 0.15)",
-              color: THEME.gold,
-              padding: "4px 10px",
-              borderRadius: 12,
-              fontWeight: 700,
-            }}
-          >
-            HALF LIFE
-          </span>
+        </div>
+
+        <div
+          style={{
+            fontFamily: C.mono,
+            fontSize: 14,
+            fontWeight: 700,
+            color: C.amber,
+            backgroundColor: "rgba(245, 158, 11, 0.12)",
+            border: "1px solid rgba(245, 158, 11, 0.3)",
+            padding: "6px 14px",
+            borderRadius: 20,
+            letterSpacing: 1,
+          }}
+        >
+          5 HOURS LOGGED
         </div>
       </div>
 
-      {/* Main Dynamic Viewport */}
+      {/* Main Cinematic Visual Stage */}
       <div
         style={{
           position: "absolute",
-          top: 150,
-          bottom: 230,
-          left: 48,
-          right: 48,
+          top: 140,
+          bottom: 220,
+          left: 0,
+          right: 0,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
         }}
       >
         {/* ================================================================ */}
-        {/* SCENE 1: Intro & 5-Hour Checkpoint Hook (Frames 0 - 268)         */}
+        {/* SCENE 1: Hero 3D Isometric View (Frames 0 - 204)                  */}
         {/* ================================================================ */}
-        {frame >= 0 && frame < 268 && (
+        {frame >= 0 && frame < 204 && (
           <div
             style={{
               width: "100%",
+              height: "100%",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              textAlign: "center",
+              position: "relative",
             }}
           >
-            {/* 3D PCB Hero */}
             <div
               style={{
-                width: 640,
-                height: 640,
+                width: 980,
+                height: 860,
                 position: "relative",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                marginBottom: 32,
               }}
             >
-              <div
-                style={{
-                  position: "absolute",
-                  width: 520,
-                  height: 520,
-                  borderRadius: "50%",
-                  background: `radial-gradient(circle, rgba(0, 240, 255, 0.25) 0%, transparent 70%)`,
-                  filter: "blur(40px)",
-                }}
-              />
               <Img
-                src={staticFile("images/hux_cover_hero.png")}
+                src={staticFile("images/renders/01_hero_isometric_3d.png")}
                 style={{
                   width: "100%",
                   height: "100%",
                   objectFit: "contain",
-                  filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.8))",
-                  transform: `scale(${interpolate(frame, [0, 268], [0.95, 1.05])})`,
+                  filter: "drop-shadow(0 25px 45px rgba(0,0,0,0.75))",
+                  transform: `scale(${interpolate(frame, [0, 204], [1.02, 1.1])}) translateY(${interpolate(frame, [0, 204], [0, -15])}px)`,
                 }}
               />
             </div>
 
+            {/* Minimal Lower Label */}
             <div
               style={{
-                fontSize: 64,
-                fontWeight: 900,
-                letterSpacing: -1,
-                color: THEME.textPrimary,
+                position: "absolute",
+                bottom: 40,
+                textAlign: "center",
               }}
             >
-              Hux
-            </div>
-            <div
-              style={{
-                fontSize: 26,
-                fontWeight: 600,
-                color: THEME.cyan,
-                marginTop: 8,
-              }}
-            >
-              Desktop AI Smart Home Companion
-            </div>
-            <div
-              style={{
-                fontFamily: FONT_MONO,
-                fontSize: 18,
-                color: THEME.gold,
-                marginTop: 12,
-                fontWeight: 700,
-                letterSpacing: 1,
-              }}
-            >
-              CHECKPOINT 01 // 5 HOURS COMPLETED
-            </div>
-          </div>
-        )}
-
-        {/* ================================================================ */}
-        {/* SCENE 2: Problem & ESP32-S3 Core (Frames 268 - 470)              */}
-        {/* ================================================================ */}
-        {frame >= 268 && frame < 470 && (
-          <div
-            style={{
-              width: "100%",
-              display: "flex",
-              flexDirection: "column",
-              gap: 24,
-            }}
-          >
-            {/* Header Card */}
-            <div
-              style={{
-                backgroundColor: THEME.cardBg,
-                border: `1.5px solid ${THEME.cardBorder}`,
-                borderRadius: 24,
-                padding: "24px 32px",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <div>
-                <div style={{ fontFamily: FONT_MONO, fontSize: 14, color: THEME.cyan, fontWeight: 700 }}>
-                  PROBLEM & ARCHITECTURE
-                </div>
-                <div style={{ fontSize: 32, fontWeight: 800, marginTop: 4 }}>
-                  Lifeless Speakers vs Hux
-                </div>
+              <div style={{ fontSize: 56, fontWeight: 900, letterSpacing: -1 }}>
+                Hux Companion
               </div>
               <div
                 style={{
-                  fontFamily: FONT_MONO,
-                  fontSize: 16,
-                  color: THEME.green,
-                  backgroundColor: "rgba(0, 245, 160, 0.15)",
-                  padding: "8px 16px",
-                  borderRadius: 16,
-                  fontWeight: 700,
+                  fontFamily: C.mono,
+                  fontSize: 18,
+                  color: C.cyan,
+                  marginTop: 8,
+                  letterSpacing: 1.5,
                 }}
               >
-                ESP32-S3 POWERED
-              </div>
-            </div>
-
-            {/* Visual Sketch Card */}
-            <div
-              style={{
-                backgroundColor: THEME.cardBg,
-                border: `1.5px solid ${THEME.cardBorder}`,
-                borderRadius: 24,
-                padding: 24,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <Img
-                src={staticFile("images/initial_01_problem_lifeless_speakers.png")}
-                style={{
-                  width: "100%",
-                  height: 520,
-                  objectFit: "contain",
-                  borderRadius: 16,
-                  backgroundColor: "#ffffff",
-                }}
-              />
-            </div>
-
-            {/* Comparison Callout */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
-              <div style={{ backgroundColor: THEME.cardBg, borderRadius: 20, padding: 20, border: `1px solid ${THEME.cardBorder}` }}>
-                <div style={{ fontFamily: FONT_MONO, fontSize: 13, color: THEME.red, fontWeight: 700 }}>REJECTED PUCK</div>
-                <div style={{ fontSize: 18, fontWeight: 700, marginTop: 4 }}>Black Plastic Cylinder</div>
-                <div style={{ fontSize: 14, color: THEME.textSecondary, marginTop: 2 }}>0 emotion, single blinking LED</div>
-              </div>
-              <div style={{ backgroundColor: THEME.cardBg, borderRadius: 20, padding: 20, border: `1px solid ${THEME.cardBorder}` }}>
-                <div style={{ fontFamily: FONT_MONO, fontSize: 13, color: THEME.green, fontWeight: 700 }}>HUX COMPANION</div>
-                <div style={{ fontSize: 18, fontWeight: 700, marginTop: 4 }}>Living Desktop Persona</div>
-                <div style={{ fontSize: 14, color: THEME.cyan, marginTop: 2 }}>Color IPS + 8-LED halo ring</div>
+                ESP32-S3 // COLOR IPS // ARC-REACTOR // LOCAL HOME ASSISTANT
               </div>
             </div>
           </div>
         )}
 
         {/* ================================================================ */}
-        {/* SCENE 3: Expressive Face & Vector Eyes (Frames 470 - 687)         */}
+        {/* SCENE 2: Cinematic Front Tilt into ESP32-S3 Macro (Frames 204 - 470) */}
+        {/* ================================================================ */}
+        {frame >= 204 && frame < 470 && (
+          <div
+            style={{
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              position: "relative",
+            }}
+          >
+            <div
+              style={{
+                width: 1000,
+                height: 840,
+                position: "relative",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              {frame < 330 ? (
+                <Img
+                  src={staticFile("images/renders/02_low_angle_front_cinematic.png")}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                    filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.8))",
+                    transform: `scale(${interpolate(frame, [204, 330], [1.0, 1.08])})`,
+                  }}
+                />
+              ) : (
+                <Img
+                  src={staticFile("images/renders/05_esp32_macro_closeup.png")}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                    filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.8))",
+                    transform: `scale(${interpolate(frame, [330, 470], [1.02, 1.1])})`,
+                  }}
+                />
+              )}
+            </div>
+
+            {/* Technical Overlay Tag */}
+            <div
+              style={{
+                position: "absolute",
+                bottom: 36,
+                backgroundColor: C.surface,
+                border: `1px solid ${C.border}`,
+                borderRadius: 16,
+                padding: "16px 28px",
+                display: "flex",
+                alignItems: "center",
+                gap: 20,
+                backdropFilter: "blur(20px)",
+              }}
+            >
+              <div>
+                <div style={{ fontFamily: C.mono, fontSize: 13, color: C.cyan }}>CORE MCU & COMPUTE</div>
+                <div style={{ fontSize: 24, fontWeight: 800, marginTop: 2 }}>ESP32-S3-WROOM-1</div>
+              </div>
+              <div style={{ width: 1, height: 32, backgroundColor: C.border }} />
+              <div>
+                <div style={{ fontFamily: C.mono, fontSize: 13, color: C.textMuted }}>SPECS</div>
+                <div style={{ fontSize: 18, fontWeight: 700, color: C.textMain, marginTop: 2 }}>
+                  240MHz Dual-Core / 16MB Flash / 8MB PSRAM
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ================================================================ */}
+        {/* SCENE 3: Top Ortho with Live Vector Eyes HUD (Frames 470 - 687)   */}
         {/* ================================================================ */}
         {frame >= 470 && frame < 687 && (
           <div
             style={{
               width: "100%",
+              height: "100%",
               display: "flex",
               flexDirection: "column",
-              gap: 24,
+              alignItems: "center",
+              justifyContent: "center",
+              position: "relative",
             }}
           >
-            {/* Header Card */}
             <div
               style={{
-                backgroundColor: THEME.cardBg,
-                border: `1.5px solid ${THEME.cardBorder}`,
-                borderRadius: 24,
-                padding: "24px 32px",
+                width: 920,
+                height: 800,
+                position: "relative",
                 display: "flex",
-                justifyContent: "space-between",
                 alignItems: "center",
-              }}
-            >
-              <div>
-                <div style={{ fontFamily: FONT_MONO, fontSize: 14, color: THEME.cyan, fontWeight: 700 }}>
-                  EXPRESSIVE FACE HUD
-                </div>
-                <div style={{ fontSize: 32, fontWeight: 800, marginTop: 4 }}>
-                  Color IPS Display
-                </div>
-              </div>
-              <div
-                style={{
-                  fontFamily: FONT_MONO,
-                  fontSize: 16,
-                  color: THEME.cyan,
-                  backgroundColor: "rgba(0, 240, 255, 0.15)",
-                  padding: "8px 16px",
-                  borderRadius: 16,
-                  fontWeight: 700,
-                }}
-              >
-                60 FPS VECTOR EYES
-              </div>
-            </div>
-
-            {/* Visual Sketch Card */}
-            <div
-              style={{
-                backgroundColor: THEME.cardBg,
-                border: `1.5px solid ${THEME.cardBorder}`,
-                borderRadius: 24,
-                padding: 24,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
+                justifyContent: "center",
               }}
             >
               <Img
-                src={staticFile("images/initial_04_expressive_face_state_machine.png")}
+                src={staticFile("images/renders/03_top_ortho_clean.png")}
                 style={{
                   width: "100%",
-                  height: 520,
+                  height: "100%",
                   objectFit: "contain",
-                  borderRadius: 16,
-                  backgroundColor: "#ffffff",
+                  filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.8))",
+                  transform: `scale(${interpolate(frame, [470, 687], [1.02, 1.08])})`,
                 }}
               />
+
+              {/* Live Vector Robot Eyes Docked directly on the Screen Area */}
+              <div
+                style={{
+                  position: "absolute",
+                  width: 140,
+                  height: 160,
+                  backgroundColor: "#050608",
+                  borderRadius: 12,
+                  border: "2px solid rgba(56, 189, 248, 0.4)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: 16,
+                  boxShadow: `0 0 24px ${C.cyanGlow}`,
+                }}
+              >
+                {/* Left Eye */}
+                <div
+                  style={{
+                    width: 32,
+                    height: eyeHeight,
+                    backgroundColor: C.cyan,
+                    borderRadius: 16,
+                    transform: `translateX(${lookX}px)`,
+                    boxShadow: `0 0 12px ${C.cyan}`,
+                    transition: "height 0.05s ease",
+                  }}
+                />
+                {/* Right Eye */}
+                <div
+                  style={{
+                    width: 32,
+                    height: eyeHeight,
+                    backgroundColor: C.cyan,
+                    borderRadius: 16,
+                    transform: `translateX(${lookX}px)`,
+                    boxShadow: `0 0 12px ${C.cyan}`,
+                    transition: "height 0.05s ease",
+                  }}
+                />
+              </div>
             </div>
 
-            {/* Spec Row */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
-              <div style={{ backgroundColor: THEME.cardBg, borderRadius: 20, padding: 20, border: `1px solid ${THEME.cardBorder}` }}>
-                <div style={{ fontFamily: FONT_MONO, fontSize: 13, color: THEME.textSecondary }}>DISPLAY BUS</div>
-                <div style={{ fontSize: 20, fontWeight: 700, marginTop: 4 }}>40MHz High-Speed SPI</div>
-                <div style={{ fontSize: 14, color: THEME.cyan, marginTop: 2 }}>ST7789 1.69" 240x280 IPS</div>
+            {/* Technical Overlay Tag */}
+            <div
+              style={{
+                position: "absolute",
+                bottom: 36,
+                backgroundColor: C.surface,
+                border: `1px solid ${C.border}`,
+                borderRadius: 16,
+                padding: "16px 28px",
+                display: "flex",
+                alignItems: "center",
+                gap: 20,
+                backdropFilter: "blur(20px)",
+              }}
+            >
+              <div>
+                <div style={{ fontFamily: C.mono, fontSize: 13, color: C.cyan }}>DISPLAY & GRAPHICS</div>
+                <div style={{ fontSize: 24, fontWeight: 800, marginTop: 2 }}>ST7789 1.69" IPS (240x280)</div>
               </div>
-              <div style={{ backgroundColor: THEME.cardBg, borderRadius: 20, padding: 20, border: `1px solid ${THEME.cardBorder}` }}>
-                <div style={{ fontFamily: FONT_MONO, fontSize: 13, color: THEME.textSecondary }}>EMOTION ENGINE</div>
-                <div style={{ fontSize: 20, fontWeight: 700, marginTop: 4 }}>Blink, Look, React</div>
-                <div style={{ fontSize: 14, color: THEME.green, marginTop: 2 }}>Real-Time State Machine</div>
+              <div style={{ width: 1, height: 32, backgroundColor: C.border }} />
+              <div>
+                <div style={{ fontFamily: C.mono, fontSize: 13, color: C.textMuted }}>ANIMATION RATE</div>
+                <div style={{ fontSize: 18, fontWeight: 700, color: C.green, marginTop: 2 }}>
+                  60 FPS Procedural Vector Eyes
+                </div>
               </div>
             </div>
           </div>
         )}
 
         {/* ================================================================ */}
-        {/* SCENE 4: Arc-Reactor Status Halo (Frames 687 - 863)              */}
+        {/* SCENE 4: Arc-Reactor Halo Macro Shot (Frames 687 - 863)           */}
         {/* ================================================================ */}
         {frame >= 687 && frame < 863 && (
           <div
             style={{
               width: "100%",
+              height: "100%",
               display: "flex",
               flexDirection: "column",
-              gap: 24,
+              alignItems: "center",
+              justifyContent: "center",
+              position: "relative",
             }}
           >
-            {/* Header Card */}
             <div
               style={{
-                backgroundColor: THEME.cardBg,
-                border: `1.5px solid ${THEME.cardBorder}`,
-                borderRadius: 24,
-                padding: "24px 32px",
+                width: 1000,
+                height: 840,
+                position: "relative",
                 display: "flex",
-                justifyContent: "space-between",
                 alignItems: "center",
-              }}
-            >
-              <div>
-                <div style={{ fontFamily: FONT_MONO, fontSize: 14, color: THEME.cyan, fontWeight: 700 }}>
-                  OPTICAL STATUS AURA
-                </div>
-                <div style={{ fontSize: 32, fontWeight: 800, marginTop: 4 }}>
-                  Arc-Reactor Halo Ring
-                </div>
-              </div>
-              <div
-                style={{
-                  fontFamily: FONT_MONO,
-                  fontSize: 16,
-                  color: THEME.gold,
-                  backgroundColor: "rgba(255, 183, 3, 0.15)",
-                  padding: "8px 16px",
-                  borderRadius: 16,
-                  fontWeight: 700,
-                }}
-              >
-                8X ADDRESSABLE LEDS
-              </div>
-            </div>
-
-            {/* Visual Sketch Card */}
-            <div
-              style={{
-                backgroundColor: THEME.cardBg,
-                border: `1.5px solid ${THEME.cardBorder}`,
-                borderRadius: 24,
-                padding: 24,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
+                justifyContent: "center",
               }}
             >
               <Img
-                src={staticFile("images/initial_05_arc_reactor_halo_optics.png")}
+                src={staticFile("images/renders/08_halo_led_ring_macro.png")}
                 style={{
                   width: "100%",
-                  height: 520,
+                  height: "100%",
                   objectFit: "contain",
-                  borderRadius: 16,
-                  backgroundColor: "#ffffff",
+                  filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.8))",
+                  transform: `scale(${interpolate(frame, [687, 863], [1.02, 1.1])})`,
                 }}
               />
             </div>
 
-            {/* Spec Row */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
-              <div style={{ backgroundColor: THEME.cardBg, borderRadius: 20, padding: 18, border: `1px solid ${THEME.cardBorder}`, textAlign: "center" }}>
-                <div style={{ fontSize: 20, fontWeight: 800, color: THEME.cyan }}>CYAN GLOW</div>
-                <div style={{ fontFamily: FONT_MONO, fontSize: 12, color: THEME.textSecondary, marginTop: 4 }}>Wake Listening</div>
+            {/* Technical Overlay Tag */}
+            <div
+              style={{
+                position: "absolute",
+                bottom: 36,
+                backgroundColor: C.surface,
+                border: `1px solid ${C.border}`,
+                borderRadius: 16,
+                padding: "16px 28px",
+                display: "flex",
+                alignItems: "center",
+                gap: 20,
+                backdropFilter: "blur(20px)",
+              }}
+            >
+              <div>
+                <div style={{ fontFamily: C.mono, fontSize: 13, color: C.amber }}>STATUS LIGHTING</div>
+                <div style={{ fontSize: 24, fontWeight: 800, marginTop: 2 }}>8x SK6812 MINI-E Ring</div>
               </div>
-              <div style={{ backgroundColor: THEME.cardBg, borderRadius: 20, padding: 18, border: `1px solid ${THEME.cardBorder}`, textAlign: "center" }}>
-                <div style={{ fontSize: 20, fontWeight: 800, color: THEME.gold }}>AMBER SPIN</div>
-                <div style={{ fontFamily: FONT_MONO, fontSize: 12, color: THEME.textSecondary, marginTop: 4 }}>Intent Thinking</div>
-              </div>
-              <div style={{ backgroundColor: THEME.cardBg, borderRadius: 20, padding: 18, border: `1px solid ${THEME.cardBorder}`, textAlign: "center" }}>
-                <div style={{ fontSize: 20, fontWeight: 800, color: THEME.green }}>PULSE FX</div>
-                <div style={{ fontFamily: FONT_MONO, fontSize: 12, color: THEME.textSecondary, marginTop: 4 }}>Volume & States</div>
+              <div style={{ width: 1, height: 32, backgroundColor: C.border }} />
+              <div>
+                <div style={{ fontFamily: C.mono, fontSize: 13, color: C.textMuted }}>FUNCTION</div>
+                <div style={{ fontSize: 18, fontWeight: 700, color: C.textMain, marginTop: 2 }}>
+                  Ambient Glow / Intent Spin / Alert Pulse
+                </div>
               </div>
             </div>
           </div>
         )}
 
         {/* ================================================================ */}
-        {/* SCENE 5: Digital I2S Audio Pipeline (Frames 863 - 1267)          */}
+        {/* SCENE 5: Digital I2S Audio Amp Macro (Frames 863 - 1267)          */}
         {/* ================================================================ */}
         {frame >= 863 && frame < 1267 && (
           <div
             style={{
               width: "100%",
+              height: "100%",
               display: "flex",
               flexDirection: "column",
-              gap: 24,
+              alignItems: "center",
+              justifyContent: "center",
+              position: "relative",
             }}
           >
-            {/* Header Card */}
             <div
               style={{
-                backgroundColor: THEME.cardBg,
-                border: `1.5px solid ${THEME.cardBorder}`,
-                borderRadius: 24,
-                padding: "24px 32px",
+                width: 1000,
+                height: 840,
+                position: "relative",
                 display: "flex",
-                justifyContent: "space-between",
                 alignItems: "center",
-              }}
-            >
-              <div>
-                <div style={{ fontFamily: FONT_MONO, fontSize: 14, color: THEME.green, fontWeight: 700 }}>
-                  AUDIO ARCHITECTURE
-                </div>
-                <div style={{ fontSize: 32, fontWeight: 800, marginTop: 4 }}>
-                  Pure Digital I2S Audio
-                </div>
-              </div>
-              <div
-                style={{
-                  fontFamily: FONT_MONO,
-                  fontSize: 16,
-                  color: THEME.green,
-                  backgroundColor: "rgba(0, 245, 160, 0.15)",
-                  padding: "8px 16px",
-                  borderRadius: 16,
-                  fontWeight: 700,
-                }}
-              >
-                ZERO RF WI-FI BUZZ
-              </div>
-            </div>
-
-            {/* Audio Sketch Showcase */}
-            <div
-              style={{
-                backgroundColor: THEME.cardBg,
-                border: `1.5px solid ${THEME.cardBorder}`,
-                borderRadius: 24,
-                padding: 24,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
+                justifyContent: "center",
               }}
             >
               <Img
-                src={staticFile("images/initial_06_voice_pipeline_i2s_dsp.png")}
+                src={staticFile("images/renders/06_audio_amp_macro.png")}
                 style={{
                   width: "100%",
-                  height: 480,
+                  height: "100%",
                   objectFit: "contain",
-                  borderRadius: 16,
-                  backgroundColor: "#ffffff",
+                  filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.8))",
+                  transform: `scale(${interpolate(frame, [863, 1267], [1.02, 1.1])})`,
                 }}
               />
             </div>
 
-            {/* Equalizer Waveform Animation */}
+            {/* Technical Overlay Tag with Audio Meter */}
             <div
               style={{
-                backgroundColor: THEME.cardBg,
-                borderRadius: 20,
+                position: "absolute",
+                bottom: 36,
+                backgroundColor: C.surface,
+                border: `1px solid ${C.border}`,
+                borderRadius: 16,
                 padding: "16px 28px",
-                border: `1px solid ${THEME.cardBorder}`,
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "space-between",
+                gap: 24,
+                backdropFilter: "blur(20px)",
               }}
             >
-              <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-                <span style={{ fontSize: 28 }}>🎙️</span>
-                <div>
-                  <div style={{ fontWeight: 700, fontSize: 18 }}>INMP441 MEMS + MAX98357A</div>
-                  <div style={{ fontFamily: FONT_MONO, fontSize: 13, color: THEME.textSecondary }}>24-bit delta-sigma ADC · 3W Class-D Amp</div>
+              <div>
+                <div style={{ fontFamily: C.mono, fontSize: 13, color: C.green }}>AUDIO PIPELINE</div>
+                <div style={{ fontSize: 24, fontWeight: 800, marginTop: 2 }}>INMP441 + MAX98357A</div>
+              </div>
+              <div style={{ width: 1, height: 32, backgroundColor: C.border }} />
+              <div>
+                <div style={{ fontFamily: C.mono, fontSize: 13, color: C.textMuted }}>SIGNAL</div>
+                <div style={{ fontSize: 18, fontWeight: 700, color: C.textMain, marginTop: 2 }}>
+                  100% Digital I2S (Zero RF Buzz)
                 </div>
               </div>
 
-              {/* Bouncing EQ Bars */}
-              <div style={{ display: "flex", alignItems: "flex-end", gap: 6, height: 36 }}>
-                {[0.6, 1.0, 0.4, 0.9, 0.7, 0.3, 0.8, 0.5].map((factor, idx) => {
-                  const barH = 12 + 24 * Math.abs(Math.sin(frame * 0.2 + idx * 0.7)) * factor;
-                  return (
-                    <div
-                      key={idx}
-                      style={{
-                        width: 6,
-                        height: barH,
-                        backgroundColor: THEME.cyan,
-                        borderRadius: 3,
-                      }}
-                    />
-                  );
-                })}
+              {/* Minimal Waveform Meter */}
+              <div style={{ display: "flex", alignItems: "flex-end", gap: 5, height: 28 }}>
+                {[0.4, 0.9, 0.6, 1.0, 0.7, 0.3, 0.8, 0.5].map((f, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      width: 5,
+                      height: 8 + 20 * Math.abs(Math.sin(frame * 0.25 + i * 0.8)) * f,
+                      backgroundColor: C.green,
+                      borderRadius: 2.5,
+                    }}
+                  />
+                ))}
               </div>
             </div>
           </div>
         )}
 
         {/* ================================================================ */}
-        {/* SCENE 6: Local Home Assistant Integration (Frames 1267 - 1493)   */}
+        {/* SCENE 6: Bottom Copper Routing & Home Assistant (Frames 1267 - 1493) */}
         {/* ================================================================ */}
         {frame >= 1267 && frame < 1493 && (
           <div
             style={{
               width: "100%",
+              height: "100%",
               display: "flex",
               flexDirection: "column",
-              gap: 24,
+              alignItems: "center",
+              justifyContent: "center",
+              position: "relative",
             }}
           >
-            {/* Header Card */}
             <div
               style={{
-                backgroundColor: THEME.cardBg,
-                border: `1.5px solid ${THEME.cardBorder}`,
-                borderRadius: 24,
-                padding: "24px 32px",
+                width: 1000,
+                height: 840,
+                position: "relative",
                 display: "flex",
-                justifyContent: "space-between",
                 alignItems: "center",
-              }}
-            >
-              <div>
-                <div style={{ fontFamily: FONT_MONO, fontSize: 14, color: THEME.cyan, fontWeight: 700 }}>
-                  ZERO CLOUD LAG
-                </div>
-                <div style={{ fontSize: 32, fontWeight: 800, marginTop: 4 }}>
-                  Local Home Assistant Link
-                </div>
-              </div>
-              <div
-                style={{
-                  fontFamily: FONT_MONO,
-                  fontSize: 16,
-                  color: THEME.green,
-                  backgroundColor: "rgba(0, 245, 160, 0.15)",
-                  padding: "8px 16px",
-                  borderRadius: 16,
-                  fontWeight: 700,
-                }}
-              >
-                &lt; 15MS RESPONSE
-              </div>
-            </div>
-
-            {/* Protocol Sketch Showcase */}
-            <div
-              style={{
-                backgroundColor: THEME.cardBg,
-                border: `1.5px solid ${THEME.cardBorder}`,
-                borderRadius: 24,
-                padding: 24,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
+                justifyContent: "center",
               }}
             >
               <Img
-                src={staticFile("images/initial_07_home_assistant_local_api.png")}
+                src={staticFile("images/renders/04_bottom_traces_routing.png")}
                 style={{
                   width: "100%",
-                  height: 500,
+                  height: "100%",
                   objectFit: "contain",
-                  borderRadius: 16,
-                  backgroundColor: "#ffffff",
+                  filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.8))",
+                  transform: `scale(${interpolate(frame, [1267, 1493], [1.02, 1.1])})`,
                 }}
               />
             </div>
 
-            {/* 3 Metric Pills */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
-              <div style={{ backgroundColor: THEME.cardBg, padding: 18, borderRadius: 16, border: `1px solid ${THEME.cardBorder}`, textAlign: "center" }}>
-                <div style={{ fontSize: 24, fontWeight: 800, color: THEME.green }}>100%</div>
-                <div style={{ fontFamily: FONT_MONO, fontSize: 12, color: THEME.textSecondary, marginTop: 4 }}>LOCAL & PRIVATE</div>
+            {/* Technical Overlay Tag */}
+            <div
+              style={{
+                position: "absolute",
+                bottom: 36,
+                backgroundColor: C.surface,
+                border: `1px solid ${C.border}`,
+                borderRadius: 16,
+                padding: "16px 28px",
+                display: "flex",
+                alignItems: "center",
+                gap: 20,
+                backdropFilter: "blur(20px)",
+              }}
+            >
+              <div>
+                <div style={{ fontFamily: C.mono, fontSize: 13, color: C.cyan }}>LOCAL CONTROL</div>
+                <div style={{ fontSize: 24, fontWeight: 800, marginTop: 2 }}>Home Assistant WebSockets</div>
               </div>
-              <div style={{ backgroundColor: THEME.cardBg, padding: 18, borderRadius: 16, border: `1px solid ${THEME.cardBorder}`, textAlign: "center" }}>
-                <div style={{ fontSize: 24, fontWeight: 800, color: THEME.cyan }}>&lt; 15ms</div>
-                <div style={{ fontFamily: FONT_MONO, fontSize: 12, color: THEME.textSecondary, marginTop: 4 }}>LATENCY TOGGLE</div>
-              </div>
-              <div style={{ backgroundColor: THEME.cardBg, padding: 18, borderRadius: 16, border: `1px solid ${THEME.cardBorder}`, textAlign: "center" }}>
-                <div style={{ fontSize: 24, fontWeight: 800, color: THEME.gold }}>0</div>
-                <div style={{ fontFamily: FONT_MONO, fontSize: 12, color: THEME.textSecondary, marginTop: 4 }}>CLOUD HOPS</div>
+              <div style={{ width: 1, height: 32, backgroundColor: C.border }} />
+              <div>
+                <div style={{ fontFamily: C.mono, fontSize: 13, color: C.textMuted }}>LATENCY</div>
+                <div style={{ fontSize: 18, fontWeight: 700, color: C.cyan, marginTop: 2 }}>
+                  Sub-15ms Toggle / 100% Private LAN
+                </div>
               </div>
             </div>
           </div>
         )}
 
         {/* ================================================================ */}
-        {/* SCENE 7: Hour 10 Roadmap & Checkpoint Outro (Frames 1493 - 1770) */}
+        {/* SCENE 7: Outro & Next Milestones (Frames 1493 - 1770)              */}
         {/* ================================================================ */}
         {frame >= 1493 && (
           <div
             style={{
               width: "100%",
+              height: "100%",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              textAlign: "center",
+              position: "relative",
             }}
           >
-            {/* Checklist Bento Card */}
             <div
               style={{
-                width: 680,
-                backgroundColor: THEME.cardBg,
-                borderRadius: 28,
-                border: `2px solid ${THEME.pillBorder}`,
-                padding: 40,
-                boxShadow: `0 20px 60px ${THEME.cyanGlow}`,
-                textAlign: "left",
+                width: 900,
+                height: 700,
+                position: "relative",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Img
+                src={staticFile("images/renders/01_hero_isometric_3d.png")}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
+                  filter: "drop-shadow(0 25px 45px rgba(0,0,0,0.85))",
+                  transform: `scale(${interpolate(frame, [1493, 1770], [1.0, 1.06])})`,
+                }}
+              />
+            </div>
+
+            {/* Minimalist Swiss-Style Milestone Card */}
+            <div
+              style={{
+                position: "absolute",
+                bottom: 30,
+                backgroundColor: C.surface,
+                border: `1px solid ${C.border}`,
+                borderRadius: 20,
+                padding: "24px 36px",
+                width: 760,
+                backdropFilter: "blur(24px)",
               }}
             >
               <div
                 style={{
-                  fontFamily: FONT_MONO,
-                  fontSize: 15,
-                  color: THEME.gold,
-                  fontWeight: 700,
-                  marginBottom: 8,
-                  letterSpacing: 1,
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginBottom: 16,
                 }}
               >
-                CHECKPOINT 01 // 5 HOURS COMPLETED
-              </div>
-              <div style={{ fontSize: 36, fontWeight: 900, marginBottom: 28 }}>
-                Hux Milestone Achieved
+                <div style={{ fontFamily: C.mono, fontSize: 14, color: C.amber, fontWeight: 700 }}>
+                  CHECKPOINT 01 // 5 HOURS COMPLETED
+                </div>
+                <div style={{ fontFamily: C.mono, fontSize: 14, color: C.textMuted }}>
+                  HACK CLUB HALF LIFE
+                </div>
               </div>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: 18, fontSize: 18 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-                  <span style={{ color: THEME.green, fontWeight: 800 }}>✔</span>
-                  <span>Architecture & System Topology Finalized</span>
+              <div style={{ display: "flex", flexDirection: "column", gap: 10, fontSize: 16 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <span style={{ color: C.green, fontWeight: 800 }}>✔</span>
+                  <span>Architecture, Pinout and Digital I2S Audio Confirmed</span>
                 </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-                  <span style={{ color: THEME.green, fontWeight: 800 }}>✔</span>
-                  <span>ESP32-S3 Pinout & Digital Audio Pipeline Locked</span>
+                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <span style={{ color: C.green, fontWeight: 800 }}>✔</span>
+                  <span>ST7789 Display, 8x NeoPixel Halo and USB-C Power Mapped</span>
                 </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-                  <span style={{ color: THEME.green, fontWeight: 800 }}>✔</span>
-                  <span>Arc-Reactor Halo & Vector Eyes Designed</span>
-                </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 14, color: THEME.cyan, fontWeight: 700 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, color: C.cyan, fontWeight: 700 }}>
                   <span>→</span>
-                  <span>Next: KiCad Schematic Capture & PCB Routing</span>
-                </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 14, color: THEME.cyan, fontWeight: 700 }}>
-                  <span>→</span>
-                  <span>Next: Display Driver & Face Engine Firmware</span>
+                  <span>Next: KiCad Schematic Capture and 2-Layer PCB Routing</span>
                 </div>
               </div>
-            </div>
-
-            <div style={{ marginTop: 36, fontSize: 22, color: THEME.textSecondary, fontFamily: FONT_MONO }}>
-              Hack Club Half Life // See you at Checkpoint 2!
             </div>
           </div>
         )}
@@ -813,32 +751,32 @@ export const Hux5HourCheckpoint: React.FC = () => {
       <div
         style={{
           position: "absolute",
-          bottom: 56,
-          left: 48,
-          right: 48,
+          bottom: 54,
+          left: 56,
+          right: 56,
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          zIndex: 50,
+          zIndex: 70,
         }}
       >
         {currentSub && (
           <div
             style={{
-              backgroundColor: "rgba(6, 7, 10, 0.92)",
-              border: `1.5px solid ${THEME.cyan}`,
-              borderRadius: 20,
-              padding: "16px 32px",
-              boxShadow: `0 8px 30px ${THEME.cyanGlow}`,
-              maxWidth: 900,
+              backgroundColor: "rgba(8, 9, 13, 0.94)",
+              border: "1px solid rgba(255, 255, 255, 0.16)",
+              borderRadius: 18,
+              padding: "14px 28px",
+              boxShadow: "0 8px 30px rgba(0, 0, 0, 0.6)",
+              maxWidth: 920,
               textAlign: "center",
             }}
           >
             <span
               style={{
-                fontSize: 24,
-                fontWeight: 700,
-                color: THEME.textPrimary,
+                fontSize: 23,
+                fontWeight: 600,
+                color: C.textMain,
                 lineHeight: 1.35,
               }}
             >
@@ -848,23 +786,22 @@ export const Hux5HourCheckpoint: React.FC = () => {
         )}
       </div>
 
-      {/* Bottom Progress Bar */}
+      {/* Minimal Bottom Progress Bar */}
       <div
         style={{
           position: "absolute",
           bottom: 0,
           left: 0,
           right: 0,
-          height: 6,
-          backgroundColor: "rgba(255, 255, 255, 0.1)",
+          height: 4,
+          backgroundColor: "rgba(255, 255, 255, 0.08)",
         }}
       >
         <div
           style={{
             height: "100%",
             width: `${progress * 100}%`,
-            backgroundColor: THEME.cyan,
-            boxShadow: `0 0 12px ${THEME.cyan}`,
+            backgroundColor: C.cyan,
           }}
         />
       </div>
