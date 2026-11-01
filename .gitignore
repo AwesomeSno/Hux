@@ -5,13 +5,23 @@
 .Spotlight-V100
 .Trashes
 
-# Remotion & Node.js
+# Remotion, Node.js & Video Production
 node_modules/
 .remotion/
 .cache/
 out/
 dist/
 build/
+Videos/
+hux-reel/
+video-scripts/
+
+# Local Dev Scripts & Scratch
+scratch/
+scripts/
+
+# Local Devlog Images (Hosted on Hack Club CDN)
+journal/images/
 
 # Python caches
 __pycache__/
