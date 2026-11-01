@@ -5,6 +5,12 @@
 .Spotlight-V100
 .Trashes
 
+# Personal Procurement & Shopping List
+SHOPPING_LIST.md
+personal/
+*SHOPPING*
+*shopping*
+
 # Remotion, Node.js & Video Production
 node_modules/
 .remotion/
