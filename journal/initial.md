@@ -2,7 +2,7 @@
 
 ## First 10 Hours
 
-I've always wanted a smart assistant on my desk that actually feels alive instead of just a boring plastic speaker puck. For Half Life, I'm building Hux—a small desktop bot inspired by Jarvis with animated eyes on a little color screen, an LED ring around it, and voice control that connects straight to my Home Assistant setup.
+I've always wanted a smart assistant on my desk that actually feels alive instead of just a boring plastic speaker puck. For Half Life, I'm building Hux: a small desktop bot inspired by Jarvis with animated eyes on a little color screen, an LED ring around it, and voice control that connects straight to my Home Assistant setup.
 
 Since this is the first 10 hours, I spent the time sketching out the basic idea, figuring out what chips to use, and planning how all the pieces will fit together.
 
@@ -14,7 +14,7 @@ Here are the sketches from the first 10 hours.
 
 Most smart speakers on the market are just plain black cylinders with a tiny LED on top. You ask them something, you wait for cloud servers, and they have zero personality. I wanted Hux to have a face, show what it's doing, and respond instantly over local Wi-Fi.
 
-![Hour 01 Sketch](images/initial_01_problem_lifeless_speakers.png)
+![Hour 01 Sketch](images/initials/initial_01_problem_lifeless_speakers.png)
 
 ---
 
@@ -22,7 +22,7 @@ Most smart speakers on the market are just plain black cylinders with a tiny LED
 
 Layed out the main parts. An ESP32-S3 handles everything: it drives a small color IPS screen for the face, controls an 8-LED ring around the bezel, listens through a digital mic, and plays audio through a small speaker. Everything is powered over USB-C.
 
-![Hour 02 Sketch](images/initial_02_hux_system_block_diagram.png)
+![Hour 02 Sketch](images/initials/initial_02_hux_system_block_diagram.png)
 
 ---
 
@@ -30,7 +30,7 @@ Layed out the main parts. An ESP32-S3 handles everything: it drives a small colo
 
 Decided to go with the ESP32-S3 since it already has Wi-Fi, runs fast enough to draw smooth animations, and has enough pins for the display, audio in/out, and LEDs without running out of GPIOs.
 
-![Hour 03 Sketch](images/initial_03_esp32s3_pinout_budget.png)
+![Hour 03 Sketch](images/initials/initial_03_esp32s3_pinout_budget.png)
 
 ---
 
@@ -38,15 +38,15 @@ Decided to go with the ESP32-S3 since it already has Wi-Fi, runs fast enough to 
 
 Sketched out how the eyes should behave. Instead of using static pictures, I want to draw them with simple code shapes so they can blink naturally, look around, squint when thinking, and bounce when speaking at 60fps.
 
-![Hour 04 Sketch](images/initial_04_expressive_face_state_machine.png)
+![Hour 04 Sketch](images/initials/initial_04_expressive_face_state_machine.png)
 
 ---
 
 ### 05: The LED halo ring
 
-Added an 8-LED ring around the screen bezel like an Arc-Reactor. It's meant to give quick visual feedback—pulsing when it hears a wake word, breathing when it's processing, and showing volume levels.
+Added an 8-LED ring around the screen bezel like an Arc-Reactor. It's meant to give quick visual feedback: pulsing when it hears a wake word, breathing when it's processing, and showing volume levels.
 
-![Hour 05 Sketch](images/initial_05_arc_reactor_halo_optics.png)
+![Hour 05 Sketch](images/initials/initial_05_arc_reactor_halo_optics.png)
 
 ---
 
@@ -54,7 +54,7 @@ Added an 8-LED ring around the screen bezel like an Arc-Reactor. It's meant to g
 
 Planned the audio circuit using an INMP441 digital microphone for listening and a MAX98357A amplifier for a small 3W speaker. Going full digital over I2S means we won't get any annoying buzzing or hum from the Wi-Fi antenna.
 
-![Hour 06 Sketch](images/initial_06_voice_pipeline_i2s_dsp.png)
+![Hour 06 Sketch](images/initials/initial_06_voice_pipeline_i2s_dsp.png)
 
 ---
 
@@ -62,7 +62,7 @@ Planned the audio circuit using an INMP441 digital microphone for listening and 
 
 The plan is to talk directly to Home Assistant over local Wi-Fi with WebSockets. That way toggling lights or asking for room temperatures happens in under 20ms without any packets ever leaving the local network.
 
-![Hour 07 Sketch](images/initial_07_home_assistant_local_api.png)
+![Hour 07 Sketch](images/initials/initial_07_home_assistant_local_api.png)
 
 ---
 
@@ -70,7 +70,7 @@ The plan is to talk directly to Home Assistant over local Wi-Fi with WebSockets.
 
 Simple power circuit: a USB-C connector with standard 5.1k resistors so it works with any cable or charger, a 3.3V regulator to power the ESP32 and screen, and basic ESD diodes to protect against static shocks when plugging it in.
 
-![Hour 08 Sketch](images/initial_08_power_delivery_and_esd.png)
+![Hour 08 Sketch](images/initials/initial_08_power_delivery_and_esd.png)
 
 ---
 
@@ -78,7 +78,7 @@ Simple power circuit: a USB-C connector with standard 5.1k resistors so it works
 
 Roughly sized the board around 72mm x 72mm so it fits nicely on a desk. The screen sits right in the middle, mounting holes go in the corners, and the USB-C port sits at the bottom edge so the cord plugs straight into the back.
 
-![Hour 09 Sketch](images/initial_09_pcb_floorplan_ergonomics.png)
+![Hour 09 Sketch](images/initials/initial_09_pcb_floorplan_ergonomics.png)
 
 ---
 
@@ -86,7 +86,7 @@ Roughly sized the board around 72mm x 72mm so it fits nicely on a desk. The scre
 
 Mapped out the rough list of hardware parts needed so we know everything is ready to order and fits together. Now that the basic concept and block diagrams are sorted, the next step is jumping into KiCad to draw the schematic.
 
-![Hour 10 Sketch](images/initial_10_half_life_budget_bom.png)
+![Hour 10 Sketch](images/initials/initial_10_half_life_budget_bom.png)
 
 ---
 
