@@ -34,6 +34,16 @@ import {
   Sketch24,
   Sketch25,
 } from "./JournalSketchesPart2";
+import {
+  Sketch26,
+  Sketch27,
+  Sketch28,
+  Sketch29,
+  Sketch30,
+  Sketch31,
+  Sketch32,
+  Sketch33,
+} from "./JournalSketchesPart3";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -279,6 +289,70 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="HourSketch25"
         component={Sketch25}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="HourSketch26"
+        component={Sketch26}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="HourSketch27"
+        component={Sketch27}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="HourSketch28"
+        component={Sketch28}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="HourSketch29"
+        component={Sketch29}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="HourSketch30"
+        component={Sketch30}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="HourSketch31"
+        component={Sketch31}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="HourSketch32"
+        component={Sketch32}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="HourSketch33"
+        component={Sketch33}
         durationInFrames={1}
         fps={30}
         width={1200}
