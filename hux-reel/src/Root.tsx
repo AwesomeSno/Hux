@@ -15,6 +15,23 @@ import {
   Sketch09,
   Sketch10,
 } from "./JournalSketches";
+import {
+  Sketch11,
+  Sketch12,
+  Sketch13,
+  Sketch14,
+  Sketch15,
+  Sketch16,
+  Sketch17,
+  Sketch18,
+  Sketch19,
+  Sketch20,
+  Sketch21,
+  Sketch22,
+  Sketch23,
+  Sketch24,
+  Sketch25,
+} from "./JournalSketchesPart2";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -121,6 +138,127 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="InitialSketch10"
         component={Sketch10}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+
+      <Composition
+        id="HourSketch11"
+        component={Sketch11}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="HourSketch12"
+        component={Sketch12}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="HourSketch13"
+        component={Sketch13}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="HourSketch14"
+        component={Sketch14}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="HourSketch15"
+        component={Sketch15}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="HourSketch16"
+        component={Sketch16}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="HourSketch17"
+        component={Sketch17}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="HourSketch18"
+        component={Sketch18}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="HourSketch19"
+        component={Sketch19}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="HourSketch20"
+        component={Sketch20}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="HourSketch21"
+        component={Sketch21}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="HourSketch22"
+        component={Sketch22}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="HourSketch23"
+        component={Sketch23}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="HourSketch24"
+        component={Sketch24}
+        durationInFrames={1}
+        fps={30}
+        width={1200}
+        height={800}
+      />
+      <Composition
+        id="HourSketch25"
+        component={Sketch25}
         durationInFrames={1}
         fps={30}
         width={1200}
