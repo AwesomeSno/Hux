@@ -8,7 +8,7 @@ A desktop AI smart home companion built with an ESP32-S3, featuring an animated 
 
 ## What is this?
 
-Most smart home speakers on the market are completely lifeless—they're just boring black plastic pucks sitting on your desk that listen to you with zero personality and no visual feedback beyond a single blinking LED.
+Most smart home speakers on the market are completely lifeless: they are just boring black plastic pucks sitting on your desk that listen to you with zero personality and no visual feedback beyond a single blinking LED.
 
 For Hack Club's Half Life, I wanted to build something with actual life and presence on my desk: **Hux**. It's a custom desktop hardware companion powered by an ESP32-S3 microcontroller with a crisp color IPS display running expressive animated eyes and reactive facial emotions. 
 
@@ -20,7 +20,7 @@ When you speak to Hux or trigger automations around your room, it talks back, co
 
 1. **Expressive Face & Telemetry Display**: A 1.69" / 2.0" ST7789 IPS LCD (240×280) sits in the center of the board, rendering smooth animated eye expressions (idle blinking, attentive listening, thinking, and speaking waveforms). When you ask about your room or devices, the screen smoothly docks into live Home Assistant glance cards.
 2. **Arc-Reactor Status Halo**: A circular ring of 8 addressable RGB NeoPixels encircles the display bezel. It pulses cyan when listening, spins amber when thinking, and flashes red on sensor alerts, giving the desk unit a real presence.
-3. **Local Home Assistant Integration**: Hux talks directly to Home Assistant using native WebSockets and REST APIs over local Wi-Fi. No slow cloud hops, no proprietary subscriptions—just instant local control over lights, switches, and smart entities.
+3. **Local Home Assistant Integration**: Hux talks directly to Home Assistant using native WebSockets and REST APIs over local Wi-Fi. No slow cloud hops, no proprietary subscriptions: just instant local control over lights, switches, and smart entities.
 4. **I2S Digital Voice Pipeline**: For voice input, an INMP441 digital MEMS microphone samples audio through a front-facing acoustic sound port drilled through the PCB. For voice replies, a MAX98357A I2S Class-D DAC amplifier powers an onboard 3W micro speaker.
 5. **72mm Desktop Form Factor**: The whole system is packaged onto a 72mm × 72mm 2-layer PCB with rounded corners and M3 mounting holes, powered cleanly over USB-C.
 
@@ -78,6 +78,22 @@ All hardware design and manufacturing files are located in [`kicad/`](kicad/):
 | **Resistors** | 10kΩ 1% (0805) | LCSC: C17414 | 0805 | 3 | Pull-ups for EN, BOOT, SD_MODE |
 | **Resistors** | 330Ω 1% (0805) | LCSC: C17632 | 0805 | 1 | NeoPixel DIN data line protection |
 | **Telemetry Header** | 4-Pin 2.54mm Header | LCSC: C22548 | 1x04 P2.54mm | 1 | I2C sensor expansion (SDA, SCL, 3V3, GND) |
+
+---
+
+## Firmware & Software Architecture
+
+The firmware is written in modular C++ targeting the ESP32-S3 dual-core microcontroller, supporting both PlatformIO and the Arduino IDE:
+
+- Entry Point: [`firmware/hux_firmware.ino`](firmware/hux_firmware.ino)
+- PlatformIO Project: [`firmware/platformio.ini`](firmware/platformio.ini)
+- Hardware Pin Config: [`firmware/include/config.h`](firmware/include/config.h)
+- 60fps Vector Eye Engine: [`firmware/src/eyes.cpp`](firmware/src/eyes.cpp)
+- Arc-Reactor NeoPixel Halo: [`firmware/src/halo.cpp`](firmware/src/halo.cpp)
+- Dual I2S Audio Driver (Mic & Amp): [`firmware/src/audio.cpp`](firmware/src/audio.cpp)
+- Home Assistant WebSocket Client: [`firmware/src/home_assistant.cpp`](firmware/src/home_assistant.cpp)
+- Multithreaded Core Engine: [`firmware/src/main.cpp`](firmware/src/main.cpp)
+- Firmware Guide: [`firmware/README.md`](firmware/README.md)
 
 ---
 
