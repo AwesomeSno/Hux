@@ -1,0 +1,40 @@
+1
+00:00:00,050 --> 00:00:00,956
+Hey everyone!
+
+2
+00:00:00,956 --> 00:00:03,728
+Quick update on Hux for Hack Club's Half Life.
+
+3
+00:00:03,728 --> 00:00:09,358
+We just crossed the 15-hour mark, and the complete hardware schematic and board architecture are locked down.
+
+4
+00:00:09,358 --> 00:00:14,586
+After the initial planning, I spent these hours turning the block diagrams into real circuits in KiCad.
+
+5
+00:00:14,586 --> 00:00:26,108
+First, I designed the power delivery with USB-C, TVS ESD diodes, and a clean 3.3-volt regulator to keep the ESP32-S3 stable under peak Wi-Fi bursts.
+
+6
+00:00:26,108 --> 00:00:33,260
+Next, I wired the 40MHz SPI display bus and daisy-chained the eight Arc-Reactor NeoPixels using hardware RMT timing.
+
+7
+00:00:33,260 --> 00:00:44,489
+For audio, I routed digital I2S lines for the INMP441 mic and the MAX98357A amplifier, giving us clean voice interaction with zero RF buzz.
+
+8
+00:00:44,489 --> 00:00:51,358
+Finally, I locked the 72-millimeter board outline with M3 mounting holes and passed ERC with zero errors.
+
+9
+00:00:51,358 --> 00:00:54,967
+Next up: routing the copper layers and exporting Gerbers.
+
+10
+00:00:54,967 --> 00:00:57,500
+Thanks for watching, and see you at the next milestone!
+

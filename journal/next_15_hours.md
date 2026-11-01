@@ -132,3 +132,4 @@ Wrote the WebSocket client to connect straight to Home Assistant over local Wi-F
 
 - **Hours Logged**: 15 hours (25 hours total project time)
 - **Status**: Complete 2-layer PCB designed and routed in KiCad, JLCPCB Gerbers and SMT BOM/CPL verified, 60fps vector eye engine and audio firmware functional, and sub-15ms Home Assistant local control tested.
+

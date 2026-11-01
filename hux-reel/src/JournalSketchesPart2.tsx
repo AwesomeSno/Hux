@@ -860,3 +860,4 @@ export const Sketch25: React.FC = () => (
     </div>
   </Canvas>
 );
+
